@@ -1,0 +1,16 @@
+{
+    "name": "rezident/self-documented-telegram-bot-sdk",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Rezident\\SelfDocumentedTelegramBotSdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yuri Nazarenko",
+            "email": "m@rezident.org"
+        }
+    ],
+    "require": {}
+}
