@@ -6,11 +6,22 @@
             "Rezident\\SelfDocumentedTelegramBotSdk\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Rezident\\SelfDocumentedTelegramBotSdk\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Yuri Nazarenko",
             "email": "m@rezident.org"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^8.0",
+        "guzzlehttp/guzzle": "7.5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9.5.25"
+    }
 }
