@@ -12,7 +12,7 @@ class Converter
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     }
 
-    public static function toMultipart(ToArrayInterface $object, string $prefix = ''): array
+    public static function toMultipart(ToArrayInterface $object, string $prefix = ''): ?array
     {
         $result = [];
         foreach ($object->toArray() as $key => $value) {
@@ -27,7 +27,7 @@ class Converter
             }
         }
 
-        return $result;
+        return count($result) ? $result : null;
     }
 
     public static function fromJson(string $data): mixed
