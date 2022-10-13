@@ -3,12 +3,12 @@
 namespace Rezident\SelfDocumentedTelegramBotSdk\components;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Request;
-use Psr\Http\Client\ClientInterface;
 use ReflectionClass;
-use Rezident\SelfDocumentedTelegramBotSdk\helpers\Json;
-use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
+use Rezident\SelfDocumentedTelegramBotSdk\helpers\Converter;
 use Rezident\SelfDocumentedTelegramBotSdk\interfaces\Executable;
+use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 
 class Executor implements Executable
 {
@@ -23,11 +23,11 @@ class Executor implements Executable
 
     public function execute(ToArrayInterface $method): mixed
     {
-        $array = $method->toArray();
         $url = sprintf(self::URL_TEMPLATE, $this->token, $this->getMethodName($method));
-        $request = new Request('POST', $url, [], Json::encode($array));
-        $response = $this->client->sendRequest($request);
-        $responseData = Json::decode($response->getBody()->getContents());
+        $request = new Request('POST', $url);
+
+        $response = $this->client->send($request, ['multipart' => Converter::toMultipart($method)]);
+        $responseData = Converter::fromJson($response->getBody()->getContents());
 
         return $responseData['result'];
     }
