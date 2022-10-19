@@ -13,7 +13,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#botcommandscopeallchatadministrators
  */
-class BotCommandScopeAllChatAdministrators implements FromArrayInterface, ToArrayInterface
+class BotCommandScopeAllChatAdministrators extends BotCommandScope implements FromArrayInterface, ToArrayInterface
 {
     private function __construct(private string $type)
     {
