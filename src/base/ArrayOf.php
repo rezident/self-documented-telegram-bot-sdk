@@ -2,11 +2,12 @@
 
 namespace Rezident\SelfDocumentedTelegramBotSdk\base;
 
+use Countable;
 use Iterator;
 use Rezident\SelfDocumentedTelegramBotSdk\interfaces\FromArrayInterface;
 use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 
-abstract class ArrayOf implements ToArrayInterface, Iterator, FromArrayInterface
+abstract class ArrayOf implements Countable, Iterator, FromArrayInterface, ToArrayInterface
 {
     protected array $items = [];
 
@@ -38,5 +39,10 @@ abstract class ArrayOf implements ToArrayInterface, Iterator, FromArrayInterface
     public function toArray(): array
     {
         return $this->items;
+    }
+
+    public function count(): int
+    {
+        return count($this->items);
     }
 }
