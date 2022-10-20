@@ -17,6 +17,15 @@ class KeyboardButtonPollType implements FromArrayInterface, ToArrayInterface
 {
     private ?string $type = null;
 
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     /**
      * If *quiz* is passed, the user will be allowed to create only polls in the quiz mode. If *regular* is passed,
      * only regular polls will be allowed. Otherwise, the user will be allowed to create a poll of any type.

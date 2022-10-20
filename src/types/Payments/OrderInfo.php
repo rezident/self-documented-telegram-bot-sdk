@@ -22,6 +22,15 @@ class OrderInfo implements FromArrayInterface, ToArrayInterface
 
     private ?ShippingAddress $shippingAddress = null;
 
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     /**
      * User name
      */

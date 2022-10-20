@@ -18,6 +18,15 @@ class ResponseParameters implements FromArrayInterface, ToArrayInterface
 
     private ?int $retryAfter = null;
 
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     /**
      * The group has been migrated to a supergroup with the specified identifier. This number may have more than 32
      * significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it

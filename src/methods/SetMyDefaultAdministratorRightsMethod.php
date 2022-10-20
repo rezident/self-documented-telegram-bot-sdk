@@ -21,6 +21,15 @@ class SetMyDefaultAdministratorRightsMethod implements ToArrayInterface
 
     private ?bool $forChannels = null;
 
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     /**
      * A JSON-serialized object describing new default administrator rights. If not specified, the default
      * administrator rights will be cleared.

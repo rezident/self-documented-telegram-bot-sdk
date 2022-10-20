@@ -16,6 +16,15 @@ class SentWebAppMessage implements FromArrayInterface, ToArrayInterface
 {
     private ?string $inlineMessageId = null;
 
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     /**
      * Identifier of the sent inline message. Available only if there is an
      * [inline keyboard](https://core.telegram.org/bots/api#inlinekeyboardmarkup) attached to the message.

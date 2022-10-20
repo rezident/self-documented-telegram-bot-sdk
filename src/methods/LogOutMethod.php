@@ -17,6 +17,15 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  */
 class LogOutMethod implements ToArrayInterface
 {
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     public function toArray(): array
     {
         return [];

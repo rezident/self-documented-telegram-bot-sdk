@@ -18,6 +18,15 @@ class GetMyDefaultAdministratorRightsMethod implements ToArrayInterface
 {
     private ?bool $forChannels = null;
 
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     /**
      * Pass *True* to get default administrator rights of the bot in channels. Otherwise, default administrator rights
      * of the bot for groups and supergroups will be returned.

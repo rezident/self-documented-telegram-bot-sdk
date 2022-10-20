@@ -22,6 +22,15 @@ class GetMyCommandsMethod implements ToArrayInterface
 
     private ?string $languageCode = null;
 
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     /**
      * A JSON-serialized object, describing scope of users. Defaults to
      * [BotCommandScopeDefault](https://core.telegram.org/bots/api#botcommandscopedefault).

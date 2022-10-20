@@ -30,6 +30,15 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
 
     private ?bool $canPinMessages = null;
 
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     /**
      * *True*, if the user is allowed to send text messages, contacts, locations and venues
      */

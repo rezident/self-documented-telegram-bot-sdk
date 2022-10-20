@@ -17,6 +17,15 @@ class DeleteWebhookMethod implements ToArrayInterface
 {
     private ?bool $dropPendingUpdates = null;
 
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     /**
      * Pass *True* to drop all pending updates
      */

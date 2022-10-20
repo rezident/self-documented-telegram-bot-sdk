@@ -16,6 +16,15 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\User;
  */
 class GetMeMethod implements ToArrayInterface
 {
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     public function toArray(): array
     {
         return [];

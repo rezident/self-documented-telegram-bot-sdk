@@ -32,6 +32,15 @@ class GetUpdatesMethod implements ToArrayInterface
 
     private ?ArrayOfString $allowedUpdates = null;
 
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     /**
      * Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of
      * previously received updates. By default, updates starting with the earliest unconfirmed update are returned. An

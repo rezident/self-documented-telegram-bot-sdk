@@ -20,6 +20,15 @@ class SetChatMenuButtonMethod implements ToArrayInterface
 
     private ?MenuButton $menuButton = null;
 
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     /**
      * Unique identifier for the target private chat. If not specified, default bot's menu button will be changed
      */

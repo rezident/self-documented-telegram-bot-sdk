@@ -24,6 +24,15 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  */
 class MenuButton implements FromArrayInterface, ToArrayInterface
 {
+    private function __construct()
+    {
+    }
+
+    public static function new(): self
+    {
+        return new self();
+    }
+
     public static function fromArray(?array $array): ?self
     {
         if ($array === null) {
