@@ -1,6 +1,8 @@
 {
     "name": "rezident/self-documented-telegram-bot-sdk",
+    "description": "Self-documented Telegram Bot Sdk",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Rezident\\SelfDocumentedTelegramBotSdk\\": "src/"
@@ -19,9 +21,6 @@
     ],
     "require": {
         "php": "^8.0",
-        "guzzlehttp/guzzle": "7.5.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "9.5.25"
+        "guzzlehttp/guzzle": "^7.5.0"
     }
 }
