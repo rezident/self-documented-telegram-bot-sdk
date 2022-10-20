@@ -13,7 +13,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chatmembermember
  */
-class ChatMemberMember implements FromArrayInterface, ToArrayInterface
+class ChatMemberMember extends ChatMember implements FromArrayInterface, ToArrayInterface
 {
     private function __construct(private string $status, private User $user)
     {

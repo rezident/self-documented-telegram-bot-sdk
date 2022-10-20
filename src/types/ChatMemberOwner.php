@@ -13,7 +13,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chatmemberowner
  */
-class ChatMemberOwner implements FromArrayInterface, ToArrayInterface
+class ChatMemberOwner extends ChatMember implements FromArrayInterface, ToArrayInterface
 {
     private ?string $customTitle = null;
 

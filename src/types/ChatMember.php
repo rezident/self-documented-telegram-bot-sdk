@@ -25,7 +25,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chatmember
  */
-class ChatMember implements FromArrayInterface, ToArrayInterface
+abstract class ChatMember implements FromArrayInterface, ToArrayInterface
 {
     public static function fromArray(?array $array): ?self
     {
@@ -33,13 +33,13 @@ class ChatMember implements FromArrayInterface, ToArrayInterface
             return null;
         }
 
-        $instance = new self();
-
-        return $instance;
-    }
-
-    public function toArray(): array
-    {
-        return [];
+        return match ($array['status']) {
+            'creator' => ChatMemberOwner::fromArray($array),
+            'administrator' => ChatMemberAdministrator::fromArray($array),
+            'member' => ChatMemberMember::fromArray($array),
+            'restricted' => ChatMemberRestricted::fromArray($array),
+            'left' => ChatMemberLeft::fromArray($array),
+            'kicked' => ChatMemberBanned::fromArray($array),
+        };
     }
 }

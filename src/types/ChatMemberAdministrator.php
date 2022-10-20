@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chatmemberadministrator
  */
-class ChatMemberAdministrator implements FromArrayInterface, ToArrayInterface
+class ChatMemberAdministrator extends ChatMember implements FromArrayInterface, ToArrayInterface
 {
     private ?bool $canPostMessages = null;
 
