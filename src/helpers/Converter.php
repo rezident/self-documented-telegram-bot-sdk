@@ -30,6 +30,22 @@ class Converter
         return count($result) ? $result : null;
     }
 
+    public static function toArray(ToArrayInterface $object): array
+    {
+        $result = [];
+        foreach ($object->toArray() as $key => $value) {
+            if ($value instanceof ToArrayInterface) {
+                $result[$key] = self::toArray($value);
+            } elseif ($value instanceof ToPlainValueInterface) {
+                $result[$key] = $value->toPlainValue();
+            } else {
+                $result[$key] = $value;
+            }
+        }
+
+        return $result;
+    }
+
     public static function fromJson(string $data): mixed
     {
         return json_decode($data, true);
