@@ -16,12 +16,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  *
  * For sending voice messages, use the [sendVoice](https://core.telegram.org/bots/api#sendvoice) method instead.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendaudio
  */
 class SendAudioMethod implements ToArrayInterface
 {
+    private ?int $messageThreadId = null;
+
     private ?string $caption = null;
 
     private ?string $parseMode = null;
@@ -62,6 +64,15 @@ class SendAudioMethod implements ToArrayInterface
     public static function new(int|string $chatId, InputFile|string $audio): self
     {
         return new self($chatId, $audio);
+    }
+
+    /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     */
+    public function messageThreadId(?int $messageThreadId): self
+    {
+        $this->messageThreadId = $messageThreadId;
+        return $this;
     }
 
     /**
@@ -173,9 +184,9 @@ class SendAudioMethod implements ToArrayInterface
 
     /**
      * Additional interface options. A JSON-serialized object for an
-     * [inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating),
-     * [custom reply keyboard](https://core.telegram.org/bots#keyboards), instructions to remove reply keyboard or to
-     * force a reply from the user.
+     * [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards),
+     * [custom reply keyboard](https://core.telegram.org/bots/features#keyboards), instructions to remove reply
+     * keyboard or to force a reply from the user.
      */
     public function replyMarkup(?ReplyMarkup $replyMarkup): self
     {
@@ -187,6 +198,7 @@ class SendAudioMethod implements ToArrayInterface
     {
         $data = [
             'chat_id' => $this->chatId,
+            'message_thread_id' => $this->messageThreadId,
             'audio' => $this->audio,
             'caption' => $this->caption,
             'parse_mode' => $this->parseMode,

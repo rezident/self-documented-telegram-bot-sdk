@@ -16,12 +16,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\TelegramPassport\PassportData;
 /**
  * This object represents a message.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#message
  */
 class Message implements FromArrayInterface, ToArrayInterface
 {
+    private ?int $messageThreadId = null;
+
     private ?User $from = null;
 
     private ?Chat $senderChat = null;
@@ -37,6 +39,8 @@ class Message implements FromArrayInterface, ToArrayInterface
     private ?string $forwardSenderName = null;
 
     private ?int $forwardDate = null;
+
+    private ?bool $isTopicMessage = null;
 
     private ?bool $isAutomaticForward = null;
 
@@ -122,6 +126,12 @@ class Message implements FromArrayInterface, ToArrayInterface
 
     private ?ProximityAlertTriggered $proximityAlertTriggered = null;
 
+    private ?ForumTopicCreated $forumTopicCreated = null;
+
+    private ?ForumTopicClosed $forumTopicClosed = null;
+
+    private ?ForumTopicReopened $forumTopicReopened = null;
+
     private ?VideoChatScheduled $videoChatScheduled = null;
 
     private ?VideoChatStarted $videoChatStarted = null;
@@ -146,6 +156,15 @@ class Message implements FromArrayInterface, ToArrayInterface
     public static function new(int $messageId, int $date, Chat $chat): self
     {
         return new self($messageId, $date, $chat);
+    }
+
+    /**
+     * Unique identifier of a message thread to which the message belongs; for supergroups only
+     */
+    public function messageThreadId(?int $messageThreadId): self
+    {
+        $this->messageThreadId = $messageThreadId;
+        return $this;
     }
 
     /**
@@ -224,6 +243,15 @@ class Message implements FromArrayInterface, ToArrayInterface
     public function forwardDate(?int $forwardDate): self
     {
         $this->forwardDate = $forwardDate;
+        return $this;
+    }
+
+    /**
+     * *True*, if the message is sent to a forum topic
+     */
+    public function isTopicMessage(?bool $isTopicMessage): self
+    {
+        $this->isTopicMessage = $isTopicMessage;
         return $this;
     }
 
@@ -626,6 +654,33 @@ class Message implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * Service message: forum topic created
+     */
+    public function forumTopicCreated(?ForumTopicCreated $forumTopicCreated): self
+    {
+        $this->forumTopicCreated = $forumTopicCreated;
+        return $this;
+    }
+
+    /**
+     * Service message: forum topic closed
+     */
+    public function forumTopicClosed(?ForumTopicClosed $forumTopicClosed): self
+    {
+        $this->forumTopicClosed = $forumTopicClosed;
+        return $this;
+    }
+
+    /**
+     * Service message: forum topic reopened
+     */
+    public function forumTopicReopened(?ForumTopicReopened $forumTopicReopened): self
+    {
+        $this->forumTopicReopened = $forumTopicReopened;
+        return $this;
+    }
+
+    /**
      * Service message: video chat scheduled
      */
     public function videoChatScheduled(?VideoChatScheduled $videoChatScheduled): self
@@ -685,6 +740,14 @@ class Message implements FromArrayInterface, ToArrayInterface
     public function getMessageId(): ?int
     {
         return $this->messageId;
+    }
+
+    /**
+     * Unique identifier of a message thread to which the message belongs; for supergroups only
+     */
+    public function getMessageThreadId(): ?int
+    {
+        return $this->messageThreadId;
     }
 
     /**
@@ -772,6 +835,14 @@ class Message implements FromArrayInterface, ToArrayInterface
     public function getForwardDate(): ?int
     {
         return $this->forwardDate;
+    }
+
+    /**
+     * *True*, if the message is sent to a forum topic
+     */
+    public function getIsTopicMessage(): ?bool
+    {
+        return $this->isTopicMessage;
     }
 
     /**
@@ -1131,6 +1202,30 @@ class Message implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * Service message: forum topic created
+     */
+    public function getForumTopicCreated(): ?ForumTopicCreated
+    {
+        return $this->forumTopicCreated;
+    }
+
+    /**
+     * Service message: forum topic closed
+     */
+    public function getForumTopicClosed(): ?ForumTopicClosed
+    {
+        return $this->forumTopicClosed;
+    }
+
+    /**
+     * Service message: forum topic reopened
+     */
+    public function getForumTopicReopened(): ?ForumTopicReopened
+    {
+        return $this->forumTopicReopened;
+    }
+
+    /**
      * Service message: video chat scheduled
      */
     public function getVideoChatScheduled(): ?VideoChatScheduled
@@ -1186,6 +1281,7 @@ class Message implements FromArrayInterface, ToArrayInterface
 
         $instance = new self($array['message_id'], $array['date'], Chat::fromArray($array['chat']));
 
+        $instance->messageThreadId = $array['message_thread_id'] ?? null;
         $instance->from = User::fromArray($array['from'] ?? null);
         $instance->senderChat = Chat::fromArray($array['sender_chat'] ?? null);
         $instance->forwardFrom = User::fromArray($array['forward_from'] ?? null);
@@ -1194,6 +1290,7 @@ class Message implements FromArrayInterface, ToArrayInterface
         $instance->forwardSignature = $array['forward_signature'] ?? null;
         $instance->forwardSenderName = $array['forward_sender_name'] ?? null;
         $instance->forwardDate = $array['forward_date'] ?? null;
+        $instance->isTopicMessage = $array['is_topic_message'] ?? null;
         $instance->isAutomaticForward = $array['is_automatic_forward'] ?? null;
         $instance->replyToMessage = Message::fromArray($array['reply_to_message'] ?? null);
         $instance->viaBot = User::fromArray($array['via_bot'] ?? null);
@@ -1236,6 +1333,9 @@ class Message implements FromArrayInterface, ToArrayInterface
         $instance->connectedWebsite = $array['connected_website'] ?? null;
         $instance->passportData = PassportData::fromArray($array['passport_data'] ?? null);
         $instance->proximityAlertTriggered = ProximityAlertTriggered::fromArray($array['proximity_alert_triggered'] ?? null);
+        $instance->forumTopicCreated = ForumTopicCreated::fromArray($array['forum_topic_created'] ?? null);
+        $instance->forumTopicClosed = ForumTopicClosed::fromArray($array['forum_topic_closed'] ?? null);
+        $instance->forumTopicReopened = ForumTopicReopened::fromArray($array['forum_topic_reopened'] ?? null);
         $instance->videoChatScheduled = VideoChatScheduled::fromArray($array['video_chat_scheduled'] ?? null);
         $instance->videoChatStarted = VideoChatStarted::fromArray($array['video_chat_started'] ?? null);
         $instance->videoChatEnded = VideoChatEnded::fromArray($array['video_chat_ended'] ?? null);
@@ -1250,6 +1350,7 @@ class Message implements FromArrayInterface, ToArrayInterface
     {
         $data = [
             'message_id' => $this->messageId,
+            'message_thread_id' => $this->messageThreadId,
             'from' => $this->from,
             'sender_chat' => $this->senderChat,
             'date' => $this->date,
@@ -1260,6 +1361,7 @@ class Message implements FromArrayInterface, ToArrayInterface
             'forward_signature' => $this->forwardSignature,
             'forward_sender_name' => $this->forwardSenderName,
             'forward_date' => $this->forwardDate,
+            'is_topic_message' => $this->isTopicMessage,
             'is_automatic_forward' => $this->isAutomaticForward,
             'reply_to_message' => $this->replyToMessage,
             'via_bot' => $this->viaBot,
@@ -1302,6 +1404,9 @@ class Message implements FromArrayInterface, ToArrayInterface
             'connected_website' => $this->connectedWebsite,
             'passport_data' => $this->passportData,
             'proximity_alert_triggered' => $this->proximityAlertTriggered,
+            'forum_topic_created' => $this->forumTopicCreated,
+            'forum_topic_closed' => $this->forumTopicClosed,
+            'forum_topic_reopened' => $this->forumTopicReopened,
             'video_chat_scheduled' => $this->videoChatScheduled,
             'video_chat_started' => $this->videoChatStarted,
             'video_chat_ended' => $this->videoChatEnded,

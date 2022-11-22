@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ReplyMarkup;
  * Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the
  * user has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create
  * user-friendly step-by-step interfaces without having to sacrifice
- * [privacy mode](https://core.telegram.org/bots#privacy-mode).
+ * [privacy mode](https://core.telegram.org/bots/features#privacy-mode).
  *
  * > **Example:** A [poll bot](https://t.me/PollBot) for groups runs in privacy mode (only receives commands, replies to
  * its messages and mentions). There could be two ways to create a new poll:
@@ -29,7 +29,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ReplyMarkup;
  * [ForceReply](https://core.telegram.org/bots/api#forcereply) in your bot's questions, it will receive the user's
  * answers even if it only receives replies, commands and mentions - without any extra work for the user.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#forcereply
  */

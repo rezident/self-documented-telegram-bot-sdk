@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on
  * success.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setchattitle
  */
@@ -23,7 +23,7 @@ class SetChatTitleMethod implements ToArrayInterface
     /**
      * @param int|string $chatId Unique identifier for the target chat or username of the target channel (in the format
      *                           `@channelusername`)
-     * @param string $title New chat title, 1-255 characters
+     * @param string $title New chat title, 1-128 characters
      */
     public static function new(int|string $chatId, string $title): self
     {

@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
  * user with an optional caption. Alternatively, you can use *input\_message\_content* to send a message with the
  * specified content instead of the video.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultcachedvideo
  */
@@ -87,8 +87,7 @@ class InlineQueryResultCachedVideo implements FromArrayInterface, ToArrayInterfa
     }
 
     /**
-     * [Inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating) attached to the
-     * message
+     * [Inline keyboard](https://core.telegram.org/bots/features#inline-keyboards) attached to the message
      */
     public function replyMarkup(?InlineKeyboardMarkup $replyMarkup): self
     {
@@ -171,8 +170,7 @@ class InlineQueryResultCachedVideo implements FromArrayInterface, ToArrayInterfa
     }
 
     /**
-     * [Inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating) attached to the
-     * message
+     * [Inline keyboard](https://core.telegram.org/bots/features#inline-keyboards) attached to the message
      */
     public function getReplyMarkup(): ?InlineKeyboardMarkup
     {

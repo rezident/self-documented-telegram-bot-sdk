@@ -52,7 +52,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * **Note:** All URLs passed in inline query results will be available to end users and therefore must be assumed to be
  * **public**.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresult
  */

@@ -13,12 +13,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * Use this method to send invoices. On success, the sent [Message](https://core.telegram.org/bots/api#message) is
  * returned.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendinvoice
  */
 class SendInvoiceMethod implements ToArrayInterface
 {
+    private ?int $messageThreadId = null;
+
     private ?int $maxTipAmount = null;
 
     private ?ArrayOfInteger $suggestedTipAmounts = null;
@@ -93,6 +95,15 @@ class SendInvoiceMethod implements ToArrayInterface
         ArrayOfLabeledPrice $prices,
     ): self {
         return new self($chatId, $title, $description, $payload, $providerToken, $currency, $prices);
+    }
+
+    /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     */
+    public function messageThreadId(?int $messageThreadId): self
+    {
+        $this->messageThreadId = $messageThreadId;
+        return $this;
     }
 
     /**
@@ -278,9 +289,8 @@ class SendInvoiceMethod implements ToArrayInterface
     }
 
     /**
-     * A JSON-serialized object for an
-     * [inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating). If empty, one 'Pay
-     * `total price`' button will be shown. If not empty, the first button must be a Pay button.
+     * A JSON-serialized object for an [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards). If
+     * empty, one 'Pay `total price`' button will be shown. If not empty, the first button must be a Pay button.
      */
     public function replyMarkup(?InlineKeyboardMarkup $replyMarkup): self
     {
@@ -292,6 +302,7 @@ class SendInvoiceMethod implements ToArrayInterface
     {
         $data = [
             'chat_id' => $this->chatId,
+            'message_thread_id' => $this->messageThreadId,
             'title' => $this->title,
             'description' => $this->description,
             'payload' => $this->payload,

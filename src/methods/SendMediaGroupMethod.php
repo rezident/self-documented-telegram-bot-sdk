@@ -12,12 +12,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfMessage;
  * only grouped in an album with messages of the same type. On success, an array of
  * [Messages](https://core.telegram.org/bots/api#message) that were sent is returned.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendmediagroup
  */
 class SendMediaGroupMethod implements ToArrayInterface
 {
+    private ?int $messageThreadId = null;
+
     private ?bool $disableNotification = null;
 
     private ?bool $protectContent = null;
@@ -39,6 +41,15 @@ class SendMediaGroupMethod implements ToArrayInterface
     public static function new(int|string $chatId, ArrayOfMediaGroupInterface $media): self
     {
         return new self($chatId, $media);
+    }
+
+    /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     */
+    public function messageThreadId(?int $messageThreadId): self
+    {
+        $this->messageThreadId = $messageThreadId;
+        return $this;
     }
 
     /**
@@ -82,6 +93,7 @@ class SendMediaGroupMethod implements ToArrayInterface
     {
         $data = [
             'chat_id' => $this->chatId,
+            'message_thread_id' => $this->messageThreadId,
             'media' => $this->media,
             'disable_notification' => $this->disableNotification,
             'protect_content' => $this->protectContent,

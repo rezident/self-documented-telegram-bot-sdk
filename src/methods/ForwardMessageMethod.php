@@ -10,12 +10,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * Use this method to forward messages of any kind. Service messages can't be forwarded. On success, the sent
  * [Message](https://core.telegram.org/bots/api#message) is returned.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#forwardmessage
  */
 class ForwardMessageMethod implements ToArrayInterface
 {
+    private ?int $messageThreadId = null;
+
     private ?bool $disableNotification = null;
 
     private ?bool $protectContent = null;
@@ -34,6 +36,15 @@ class ForwardMessageMethod implements ToArrayInterface
     public static function new(int|string $chatId, int|string $fromChatId, int $messageId): self
     {
         return new self($chatId, $fromChatId, $messageId);
+    }
+
+    /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     */
+    public function messageThreadId(?int $messageThreadId): self
+    {
+        $this->messageThreadId = $messageThreadId;
+        return $this;
     }
 
     /**
@@ -59,6 +70,7 @@ class ForwardMessageMethod implements ToArrayInterface
     {
         $data = [
             'chat_id' => $this->chatId,
+            'message_thread_id' => $this->messageThreadId,
             'from_chat_id' => $this->fromChatId,
             'disable_notification' => $this->disableNotification,
             'protect_content' => $this->protectContent,

@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfLabeledPrice;
  * Represents the [content](https://core.telegram.org/bots/api#inputmessagecontent) of an invoice message to be sent as
  * the result of an inline query.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inputinvoicemessagecontent
  */

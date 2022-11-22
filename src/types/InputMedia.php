@@ -15,7 +15,7 @@ namespace Rezident\SelfDocumentedTelegramBotSdk\types;
  *
  * - [InputMediaVideo](https://core.telegram.org/bots/api#inputmediavideo)
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inputmedia
  */

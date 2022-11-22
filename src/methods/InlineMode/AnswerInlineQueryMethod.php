@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfInlineQueryRes
  *
  * No more than **50** results per query are allowed.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#answerinlinequery
  */
@@ -82,8 +82,8 @@ class AnswerInlineQueryMethod implements ToArrayInterface
     }
 
     /**
-     * [Deep-linking](https://core.telegram.org/bots#deep-linking) parameter for the /start message sent to the bot
-     * when user presses the switch button. 1-64 characters, only `A-Z`, `a-z`, `0-9`, `_` and `-` are allowed.
+     * [Deep-linking](https://core.telegram.org/bots/features#deep-linking) parameter for the /start message sent to
+     * the bot when user presses the switch button. 1-64 characters, only `A-Z`, `a-z`, `0-9`, `_` and `-` are allowed.
      *
      * *Example:* An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account
      * to adapt search results accordingly. To do this, it displays a 'Connect your YouTube account' button above the

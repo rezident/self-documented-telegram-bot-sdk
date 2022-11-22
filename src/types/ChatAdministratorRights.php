@@ -8,7 +8,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 /**
  * Represents the rights of an administrator in a chat.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chatadministratorrights
  */
@@ -19,6 +19,8 @@ class ChatAdministratorRights implements FromArrayInterface, ToArrayInterface
     private ?bool $canEditMessages = null;
 
     private ?bool $canPinMessages = null;
+
+    private ?bool $canManageTopics = null;
 
     private function __construct(
         private bool $isAnonymous,
@@ -92,6 +94,15 @@ class ChatAdministratorRights implements FromArrayInterface, ToArrayInterface
     public function canPinMessages(?bool $canPinMessages): self
     {
         $this->canPinMessages = $canPinMessages;
+        return $this;
+    }
+
+    /**
+     * *True*, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
+     */
+    public function canManageTopics(?bool $canManageTopics): self
+    {
+        $this->canManageTopics = $canManageTopics;
         return $this;
     }
 
@@ -187,6 +198,14 @@ class ChatAdministratorRights implements FromArrayInterface, ToArrayInterface
         return $this->canPinMessages;
     }
 
+    /**
+     * *True*, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
+     */
+    public function getCanManageTopics(): ?bool
+    {
+        return $this->canManageTopics;
+    }
+
     public static function fromArray(?array $array): ?self
     {
         if ($array === null) {
@@ -207,6 +226,7 @@ class ChatAdministratorRights implements FromArrayInterface, ToArrayInterface
         $instance->canPostMessages = $array['can_post_messages'] ?? null;
         $instance->canEditMessages = $array['can_edit_messages'] ?? null;
         $instance->canPinMessages = $array['can_pin_messages'] ?? null;
+        $instance->canManageTopics = $array['can_manage_topics'] ?? null;
 
         return $instance;
     }
@@ -225,6 +245,7 @@ class ChatAdministratorRights implements FromArrayInterface, ToArrayInterface
             'can_post_messages' => $this->canPostMessages,
             'can_edit_messages' => $this->canEditMessages,
             'can_pin_messages' => $this->canPinMessages,
+            'can_manage_topics' => $this->canManageTopics,
         ];
 
         return array_filter($data, fn($val) => $val !== null);

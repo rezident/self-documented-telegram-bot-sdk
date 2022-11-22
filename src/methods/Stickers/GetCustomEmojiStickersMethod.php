@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfString;
  * Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of
  * [Sticker](https://core.telegram.org/bots/api#sticker) objects.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getcustomemojistickers
  */

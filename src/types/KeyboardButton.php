@@ -19,7 +19,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * **Note:** *web\_app* option will only work in Telegram versions released after 16 April, 2022. Older clients will
  * display *unsupported message*.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#keyboardbutton
  */

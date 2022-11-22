@@ -14,7 +14,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfGameHighScore;
  * Will also return the top three users if the user and their neighbors are not among them. Please note that this
  * behavior is subject to change.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getgamehighscores
  */

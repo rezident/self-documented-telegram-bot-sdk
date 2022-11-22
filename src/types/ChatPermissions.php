@@ -8,7 +8,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 /**
  * Describes actions that a non-administrator user is allowed to take in a chat.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chatpermissions
  */
@@ -29,6 +29,8 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
     private ?bool $canInviteUsers = null;
 
     private ?bool $canPinMessages = null;
+
+    private ?bool $canManageTopics = null;
 
     private function __construct()
     {
@@ -114,6 +116,15 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * *True*, if the user is allowed to create forum topics. If omitted defaults to the value of can\_pin\_messages
+     */
+    public function canManageTopics(?bool $canManageTopics): self
+    {
+        $this->canManageTopics = $canManageTopics;
+        return $this;
+    }
+
+    /**
      * *True*, if the user is allowed to send text messages, contacts, locations and venues
      */
     public function getCanSendMessages(): ?bool
@@ -179,6 +190,14 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
         return $this->canPinMessages;
     }
 
+    /**
+     * *True*, if the user is allowed to create forum topics. If omitted defaults to the value of can\_pin\_messages
+     */
+    public function getCanManageTopics(): ?bool
+    {
+        return $this->canManageTopics;
+    }
+
     public static function fromArray(?array $array): ?self
     {
         if ($array === null) {
@@ -195,6 +214,7 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
         $instance->canChangeInfo = $array['can_change_info'] ?? null;
         $instance->canInviteUsers = $array['can_invite_users'] ?? null;
         $instance->canPinMessages = $array['can_pin_messages'] ?? null;
+        $instance->canManageTopics = $array['can_manage_topics'] ?? null;
 
         return $instance;
     }
@@ -210,6 +230,7 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
             'can_change_info' => $this->canChangeInfo,
             'can_invite_users' => $this->canInviteUsers,
             'can_pin_messages' => $this->canPinMessages,
+            'can_manage_topics' => $this->canManageTopics,
         ];
 
         return array_filter($data, fn($val) => $val !== null);

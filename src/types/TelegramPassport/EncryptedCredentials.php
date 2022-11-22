@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * [Telegram Passport Documentation](https://core.telegram.org/passport#receiving-information) for a complete
  * description of the data decryption and authentication processes.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#encryptedcredentials
  */

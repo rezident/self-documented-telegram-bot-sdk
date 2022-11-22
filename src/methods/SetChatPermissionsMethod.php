@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\ChatPermissions;
  * supergroup for this to work and must have the *can\_restrict\_members* administrator rights. Returns *True* on
  * success.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setchatpermissions
  */

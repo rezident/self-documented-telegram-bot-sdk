@@ -4,11 +4,12 @@ namespace Rezident\SelfDocumentedTelegramBotSdk\types;
 
 use Rezident\SelfDocumentedTelegramBotSdk\interfaces\FromArrayInterface;
 use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
+use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfString;
 
 /**
  * This object represents a chat.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chat
  */
@@ -22,7 +23,13 @@ class Chat implements FromArrayInterface, ToArrayInterface
 
     private ?string $lastName = null;
 
+    private ?bool $isForum = null;
+
     private ?ChatPhoto $photo = null;
+
+    private ?ArrayOfString $activeUsernames = null;
+
+    private ?string $emojiStatusCustomEmojiId = null;
 
     private ?string $bio = null;
 
@@ -109,11 +116,43 @@ class Chat implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * *True*, if the supergroup chat is a forum (has
+     * [topics](https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups) enabled)
+     */
+    public function isForum(?bool $isForum): self
+    {
+        $this->isForum = $isForum;
+        return $this;
+    }
+
+    /**
      * Chat photo. Returned only in [getChat](https://core.telegram.org/bots/api#getchat).
      */
     public function photo(?ChatPhoto $photo): self
     {
         $this->photo = $photo;
+        return $this;
+    }
+
+    /**
+     * If non-empty, the list of all
+     * [active chat usernames](https://telegram.org/blog/topics-in-groups-collectible-usernames#collectible-usernames);
+     * for private chats, supergroups and channels. Returned only in
+     * [getChat](https://core.telegram.org/bots/api#getchat).
+     */
+    public function activeUsernames(?ArrayOfString $activeUsernames): self
+    {
+        $this->activeUsernames = $activeUsernames;
+        return $this;
+    }
+
+    /**
+     * Custom emoji identifier of emoji status of the other party in a private chat. Returned only in
+     * [getChat](https://core.telegram.org/bots/api#getchat).
+     */
+    public function emojiStatusCustomEmojiId(?string $emojiStatusCustomEmojiId): self
+    {
+        $this->emojiStatusCustomEmojiId = $emojiStatusCustomEmojiId;
         return $this;
     }
 
@@ -331,11 +370,40 @@ class Chat implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * *True*, if the supergroup chat is a forum (has
+     * [topics](https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups) enabled)
+     */
+    public function getIsForum(): ?bool
+    {
+        return $this->isForum;
+    }
+
+    /**
      * Chat photo. Returned only in [getChat](https://core.telegram.org/bots/api#getchat).
      */
     public function getPhoto(): ?ChatPhoto
     {
         return $this->photo;
+    }
+
+    /**
+     * If non-empty, the list of all
+     * [active chat usernames](https://telegram.org/blog/topics-in-groups-collectible-usernames#collectible-usernames);
+     * for private chats, supergroups and channels. Returned only in
+     * [getChat](https://core.telegram.org/bots/api#getchat).
+     */
+    public function getActiveUsernames(): ?ArrayOfString
+    {
+        return $this->activeUsernames;
+    }
+
+    /**
+     * Custom emoji identifier of emoji status of the other party in a private chat. Returned only in
+     * [getChat](https://core.telegram.org/bots/api#getchat).
+     */
+    public function getEmojiStatusCustomEmojiId(): ?string
+    {
+        return $this->emojiStatusCustomEmojiId;
     }
 
     /**
@@ -497,7 +565,10 @@ class Chat implements FromArrayInterface, ToArrayInterface
         $instance->username = $array['username'] ?? null;
         $instance->firstName = $array['first_name'] ?? null;
         $instance->lastName = $array['last_name'] ?? null;
+        $instance->isForum = $array['is_forum'] ?? null;
         $instance->photo = ChatPhoto::fromArray($array['photo'] ?? null);
+        $instance->activeUsernames = ArrayOfString::fromArray($array['active_usernames'] ?? null);
+        $instance->emojiStatusCustomEmojiId = $array['emoji_status_custom_emoji_id'] ?? null;
         $instance->bio = $array['bio'] ?? null;
         $instance->hasPrivateForwards = $array['has_private_forwards'] ?? null;
         $instance->hasRestrictedVoiceAndVideoMessages = $array['has_restricted_voice_and_video_messages'] ?? null;
@@ -527,7 +598,10 @@ class Chat implements FromArrayInterface, ToArrayInterface
             'username' => $this->username,
             'first_name' => $this->firstName,
             'last_name' => $this->lastName,
+            'is_forum' => $this->isForum,
             'photo' => $this->photo,
+            'active_usernames' => $this->activeUsernames,
+            'emoji_status_custom_emoji_id' => $this->emojiStatusCustomEmojiId,
             'bio' => $this->bio,
             'has_private_forwards' => $this->hasPrivateForwards,
             'has_restricted_voice_and_video_messages' => $this->hasRestrictedVoiceAndVideoMessages,

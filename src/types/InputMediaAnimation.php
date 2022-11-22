@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfMessageEntity;
 /**
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inputmediaanimation
  */

@@ -6,7 +6,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\base\ArrayOf;
 use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardButton;
 
 /**
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  */
 class ArrayOfInlineKeyboardButton extends ArrayOf

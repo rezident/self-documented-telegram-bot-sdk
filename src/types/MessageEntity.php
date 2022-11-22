@@ -8,7 +8,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 /**
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#messageentity
  */
@@ -35,8 +35,10 @@ class MessageEntity implements FromArrayInterface, ToArrayInterface
      *                     (monowidth block), “text\_link” (for clickable text URLs), “text\_mention” (for users
      *                     [without usernames](https://telegram.org/blog/edit#new-mentions)), “custom\_emoji” (for
      *                     inline custom emoji stickers)
-     * @param int $offset Offset in UTF-16 code units to the start of the entity
-     * @param int $length Length of the entity in UTF-16 code units
+     * @param int $offset Offset in [UTF-16 code units](https://core.telegram.org/api/entities#entity-length) to the
+     *                    start of the entity
+     * @param int $length Length of the entity in
+     *                    [UTF-16 code units](https://core.telegram.org/api/entities#entity-length)
      */
     public static function new(string $type, int $offset, int $length): self
     {
@@ -96,7 +98,7 @@ class MessageEntity implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * Offset in UTF-16 code units to the start of the entity
+     * Offset in [UTF-16 code units](https://core.telegram.org/api/entities#entity-length) to the start of the entity
      */
     public function getOffset(): ?int
     {
@@ -104,7 +106,7 @@ class MessageEntity implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * Length of the entity in UTF-16 code units
+     * Length of the entity in [UTF-16 code units](https://core.telegram.org/api/entities#entity-length)
      */
     public function getLength(): ?int
     {

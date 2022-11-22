@@ -10,6 +10,8 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  *
  * \- A message can only be deleted if it was sent less than 48 hours ago.
  *
+ * \- Service messages about a supergroup, channel, or forum topic creation can't be deleted.
+ *
  * \- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.
  *
  * \- Bots can delete outgoing messages in private chats, groups, and supergroups.
@@ -24,7 +26,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  *
  * Returns *True* on success.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#deletemessage
  */

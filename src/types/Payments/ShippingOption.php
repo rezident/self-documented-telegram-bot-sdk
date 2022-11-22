@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfLabeledPrice;
 /**
  * This object represents one shipping option.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#shippingoption
  */

@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns *True* on
  * success.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setchatadministratorcustomtitle
  */

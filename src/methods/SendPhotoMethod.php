@@ -13,12 +13,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * Use this method to send photos. On success, the sent [Message](https://core.telegram.org/bots/api#message) is
  * returned.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendphoto
  */
 class SendPhotoMethod implements ToArrayInterface
 {
+    private ?int $messageThreadId = null;
+
     private ?string $caption = null;
 
     private ?string $parseMode = null;
@@ -52,6 +54,15 @@ class SendPhotoMethod implements ToArrayInterface
     public static function new(int|string $chatId, InputFile|string $photo): self
     {
         return new self($chatId, $photo);
+    }
+
+    /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     */
+    public function messageThreadId(?int $messageThreadId): self
+    {
+        $this->messageThreadId = $messageThreadId;
+        return $this;
     }
 
     /**
@@ -122,9 +133,9 @@ class SendPhotoMethod implements ToArrayInterface
 
     /**
      * Additional interface options. A JSON-serialized object for an
-     * [inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating),
-     * [custom reply keyboard](https://core.telegram.org/bots#keyboards), instructions to remove reply keyboard or to
-     * force a reply from the user.
+     * [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards),
+     * [custom reply keyboard](https://core.telegram.org/bots/features#keyboards), instructions to remove reply
+     * keyboard or to force a reply from the user.
      */
     public function replyMarkup(?ReplyMarkup $replyMarkup): self
     {
@@ -136,6 +147,7 @@ class SendPhotoMethod implements ToArrayInterface
     {
         $data = [
             'chat_id' => $this->chatId,
+            'message_thread_id' => $this->messageThreadId,
             'photo' => $this->photo,
             'caption' => $this->caption,
             'parse_mode' => $this->parseMode,

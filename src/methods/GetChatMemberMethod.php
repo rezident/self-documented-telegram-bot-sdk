@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\ChatMember;
  * Use this method to get information about a member of a chat. Returns a
  * [ChatMember](https://core.telegram.org/bots/api#chatmember) object on success.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getchatmember
  */

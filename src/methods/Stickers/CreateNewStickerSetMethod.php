@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Stickers\MaskPosition;
  * created. You **must** use exactly one of the fields *png\_sticker*, *tgs\_sticker*, or *webm\_sticker*. Returns
  * *True* on success.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#createnewstickerset
  */

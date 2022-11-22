@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * chat for this to work and must have the appropriate administrator rights. Pass *False* for all boolean parameters to
  * demote a user. Returns *True* on success.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#promotechatmember
  */
@@ -37,6 +37,8 @@ class PromoteChatMemberMethod implements ToArrayInterface
     private ?bool $canInviteUsers = null;
 
     private ?bool $canPinMessages = null;
+
+    private ?bool $canManageTopics = null;
 
     private function __construct(private int|string $chatId, private int $userId)
     {
@@ -155,6 +157,15 @@ class PromoteChatMemberMethod implements ToArrayInterface
         return $this;
     }
 
+    /**
+     * Pass *True* if the user is allowed to create, rename, close, and reopen forum topics, supergroups only
+     */
+    public function canManageTopics(?bool $canManageTopics): self
+    {
+        $this->canManageTopics = $canManageTopics;
+        return $this;
+    }
+
     public function toArray(): array
     {
         $data = [
@@ -171,6 +182,7 @@ class PromoteChatMemberMethod implements ToArrayInterface
             'can_change_info' => $this->canChangeInfo,
             'can_invite_users' => $this->canInviteUsers,
             'can_pin_messages' => $this->canPinMessages,
+            'can_manage_topics' => $this->canManageTopics,
         ];
 
         return array_filter($data, fn($val) => $val !== null);

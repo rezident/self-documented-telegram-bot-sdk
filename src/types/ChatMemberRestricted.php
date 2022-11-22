@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * Represents a [chat member](https://core.telegram.org/bots/api#chatmember) that is under certain restrictions in the
  * chat. Supergroups only.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chatmemberrestricted
  */
@@ -22,6 +22,7 @@ class ChatMemberRestricted extends ChatMember implements FromArrayInterface, ToA
         private bool $canChangeInfo,
         private bool $canInviteUsers,
         private bool $canPinMessages,
+        private bool $canManageTopics,
         private bool $canSendMessages,
         private bool $canSendMediaMessages,
         private bool $canSendPolls,
@@ -38,6 +39,7 @@ class ChatMemberRestricted extends ChatMember implements FromArrayInterface, ToA
      * @param bool $canChangeInfo *True*, if the user is allowed to change the chat title, photo and other settings
      * @param bool $canInviteUsers *True*, if the user is allowed to invite new users to the chat
      * @param bool $canPinMessages *True*, if the user is allowed to pin messages
+     * @param bool $canManageTopics *True*, if the user is allowed to create forum topics
      * @param bool $canSendMessages *True*, if the user is allowed to send text messages, contacts, locations and
      *                              venues
      * @param bool $canSendMediaMessages *True*, if the user is allowed to send audios, documents, photos, videos,
@@ -56,6 +58,7 @@ class ChatMemberRestricted extends ChatMember implements FromArrayInterface, ToA
         bool $canChangeInfo,
         bool $canInviteUsers,
         bool $canPinMessages,
+        bool $canManageTopics,
         bool $canSendMessages,
         bool $canSendMediaMessages,
         bool $canSendPolls,
@@ -70,6 +73,7 @@ class ChatMemberRestricted extends ChatMember implements FromArrayInterface, ToA
             $canChangeInfo,
             $canInviteUsers,
             $canPinMessages,
+            $canManageTopics,
             $canSendMessages,
             $canSendMediaMessages,
             $canSendPolls,
@@ -125,6 +129,14 @@ class ChatMemberRestricted extends ChatMember implements FromArrayInterface, ToA
     public function getCanPinMessages(): ?bool
     {
         return $this->canPinMessages;
+    }
+
+    /**
+     * *True*, if the user is allowed to create forum topics
+     */
+    public function getCanManageTopics(): ?bool
+    {
+        return $this->canManageTopics;
     }
 
     /**
@@ -188,6 +200,7 @@ class ChatMemberRestricted extends ChatMember implements FromArrayInterface, ToA
             $array['can_change_info'],
             $array['can_invite_users'],
             $array['can_pin_messages'],
+            $array['can_manage_topics'],
             $array['can_send_messages'],
             $array['can_send_media_messages'],
             $array['can_send_polls'],
@@ -208,6 +221,7 @@ class ChatMemberRestricted extends ChatMember implements FromArrayInterface, ToA
             'can_change_info' => $this->canChangeInfo,
             'can_invite_users' => $this->canInviteUsers,
             'can_pin_messages' => $this->canPinMessages,
+            'can_manage_topics' => $this->canManageTopics,
             'can_send_messages' => $this->canSendMessages,
             'can_send_media_messages' => $this->canSendMediaMessages,
             'can_send_polls' => $this->canSendPolls,

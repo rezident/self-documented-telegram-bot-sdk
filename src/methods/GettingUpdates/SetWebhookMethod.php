@@ -33,7 +33,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InputFile;
  * > If you're having any trouble setting up webhooks, please check out this
  * [amazing guide to webhooks](https://core.telegram.org/bots/webhooks).
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setwebhook
  */

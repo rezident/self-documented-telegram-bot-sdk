@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * to join it. So if the user is a member of the chat they will also be **removed** from the chat. If you don't want
  * this, use the parameter *only\_if\_banned*. Returns *True* on success.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#unbanchatmember
  */

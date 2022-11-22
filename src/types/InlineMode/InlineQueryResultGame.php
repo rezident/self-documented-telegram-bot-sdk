@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
  * **Note:** This will only work in Telegram versions released after October 1, 2016. Older clients will not display any
  * inline results if a game result is among them.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultgame
  */
@@ -35,8 +35,7 @@ class InlineQueryResultGame implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * [Inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating) attached to the
-     * message
+     * [Inline keyboard](https://core.telegram.org/bots/features#inline-keyboards) attached to the message
      */
     public function replyMarkup(?InlineKeyboardMarkup $replyMarkup): self
     {
@@ -69,8 +68,7 @@ class InlineQueryResultGame implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * [Inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating) attached to the
-     * message
+     * [Inline keyboard](https://core.telegram.org/bots/features#inline-keyboards) attached to the message
      */
     public function getReplyMarkup(): ?InlineKeyboardMarkup
     {

@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Poll;
  * Use this method to stop a poll which was sent by the bot. On success, the stopped
  * [Poll](https://core.telegram.org/bots/api#poll) is returned.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#stoppoll
  */
@@ -35,7 +35,7 @@ class StopPollMethod implements ToArrayInterface
 
     /**
      * A JSON-serialized object for a new message
-     * [inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating).
+     * [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards).
      */
     public function replyMarkup(?InlineKeyboardMarkup $replyMarkup): self
     {

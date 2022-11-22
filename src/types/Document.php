@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * [voice messages](https://core.telegram.org/bots/api#voice) and
  * [audio files](https://core.telegram.org/bots/api#audio)).
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#document
  */

@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
 /**
  * Represents a link to an article or web page.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultarticle
  */
@@ -49,8 +49,7 @@ class InlineQueryResultArticle implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * [Inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating) attached to the
-     * message
+     * [Inline keyboard](https://core.telegram.org/bots/features#inline-keyboards) attached to the message
      */
     public function replyMarkup(?InlineKeyboardMarkup $replyMarkup): self
     {
@@ -145,8 +144,7 @@ class InlineQueryResultArticle implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * [Inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating) attached to the
-     * message
+     * [Inline keyboard](https://core.telegram.org/bots/features#inline-keyboards) attached to the message
      */
     public function getReplyMarkup(): ?InlineKeyboardMarkup
     {

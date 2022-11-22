@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InputFile;
  * Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only.
  * Video thumbnails can be set only for video sticker sets only. Returns *True* on success.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setstickersetthumb
  */

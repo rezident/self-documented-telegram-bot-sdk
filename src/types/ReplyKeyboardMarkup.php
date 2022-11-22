@@ -8,10 +8,10 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfArrayOfKeyboar
 use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ReplyMarkup;
 
 /**
- * This object represents a [custom keyboard](https://core.telegram.org/bots#keyboards) with reply options (see
- * [Introduction to bots](https://core.telegram.org/bots#keyboards) for details and examples).
+ * This object represents a [custom keyboard](https://core.telegram.org/bots/features#keyboards) with reply options (see
+ * [Introduction to bots](https://core.telegram.org/bots/features#keyboards) for details and examples).
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#replykeyboardmarkup
  */

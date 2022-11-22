@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited
  * [Message](https://core.telegram.org/bots/api#message) is returned, otherwise *True* is returned.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#editmessagecaption
  */
@@ -99,8 +99,7 @@ class EditMessageCaptionMethod implements ToArrayInterface
     }
 
     /**
-     * A JSON-serialized object for an
-     * [inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating).
+     * A JSON-serialized object for an [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards).
      */
     public function replyMarkup(?InlineKeyboardMarkup $replyMarkup): self
     {

@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * This object represents a [video message](https://telegram.org/blog/video-messages-and-telescope) (available in
  * Telegram apps as of [v.4.0](https://telegram.org/blog/video-messages-and-telescope)).
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#videonote
  */

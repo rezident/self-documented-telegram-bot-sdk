@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\MediaGroupInterface;
 /**
  * Represents a photo to be sent.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inputmediaphoto
  */

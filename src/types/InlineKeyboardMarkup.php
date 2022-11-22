@@ -8,13 +8,13 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfArrayOfInlineK
 use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ReplyMarkup;
 
 /**
- * This object represents an [inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating)
- * that appears right next to the message it belongs to.
+ * This object represents an [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards) that appears
+ * right next to the message it belongs to.
  *
  * **Note:** This will only work in Telegram versions released after 9 April, 2016. Older clients will display
  * *unsupported message*.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinekeyboardmarkup
  */

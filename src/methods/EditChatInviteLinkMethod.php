@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\ChatInviteLink;
  * for this to work and must have the appropriate administrator rights. Returns the edited invite link as a
  * [ChatInviteLink](https://core.telegram.org/bots/api#chatinvitelink) object.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#editchatinvitelink
  */

@@ -13,12 +13,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * videos of up to 1 minute long. Use this method to send video messages. On success, the sent
  * [Message](https://core.telegram.org/bots/api#message) is returned.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendvideonote
  */
 class SendVideoNoteMethod implements ToArrayInterface
 {
+    private ?int $messageThreadId = null;
+
     private ?int $duration = null;
 
     private ?int $length = null;
@@ -51,6 +53,15 @@ class SendVideoNoteMethod implements ToArrayInterface
     public static function new(int|string $chatId, InputFile|string $videoNote): self
     {
         return new self($chatId, $videoNote);
+    }
+
+    /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     */
+    public function messageThreadId(?int $messageThreadId): self
+    {
+        $this->messageThreadId = $messageThreadId;
+        return $this;
     }
 
     /**
@@ -124,9 +135,9 @@ class SendVideoNoteMethod implements ToArrayInterface
 
     /**
      * Additional interface options. A JSON-serialized object for an
-     * [inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating),
-     * [custom reply keyboard](https://core.telegram.org/bots#keyboards), instructions to remove reply keyboard or to
-     * force a reply from the user.
+     * [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards),
+     * [custom reply keyboard](https://core.telegram.org/bots/features#keyboards), instructions to remove reply
+     * keyboard or to force a reply from the user.
      */
     public function replyMarkup(?ReplyMarkup $replyMarkup): self
     {
@@ -138,6 +149,7 @@ class SendVideoNoteMethod implements ToArrayInterface
     {
         $data = [
             'chat_id' => $this->chatId,
+            'message_thread_id' => $this->messageThreadId,
             'video_note' => $this->videoNote,
             'duration' => $this->duration,
             'length' => $this->length,

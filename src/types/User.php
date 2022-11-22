@@ -8,7 +8,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 /**
  * This object represents a Telegram user or bot.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#user
  */
@@ -102,8 +102,8 @@ class User implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * *True*, if [privacy mode](https://core.telegram.org/bots#privacy-mode) is disabled for the bot. Returned only in
-     * [getMe](https://core.telegram.org/bots/api#getme).
+     * *True*, if [privacy mode](https://core.telegram.org/bots/features#privacy-mode) is disabled for the bot.
+     * Returned only in [getMe](https://core.telegram.org/bots/api#getme).
      */
     public function canReadAllGroupMessages(?bool $canReadAllGroupMessages): self
     {
@@ -195,8 +195,8 @@ class User implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * *True*, if [privacy mode](https://core.telegram.org/bots#privacy-mode) is disabled for the bot. Returned only in
-     * [getMe](https://core.telegram.org/bots/api#getme).
+     * *True*, if [privacy mode](https://core.telegram.org/bots/features#privacy-mode) is disabled for the bot.
+     * Returned only in [getMe](https://core.telegram.org/bots/api#getme).
      */
     public function getCanReadAllGroupMessages(): ?bool
     {

@@ -11,12 +11,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * Use this method to send phone contacts. On success, the sent [Message](https://core.telegram.org/bots/api#message) is
  * returned.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendcontact
  */
 class SendContactMethod implements ToArrayInterface
 {
+    private ?int $messageThreadId = null;
+
     private ?string $lastName = null;
 
     private ?string $vcard = null;
@@ -44,6 +46,15 @@ class SendContactMethod implements ToArrayInterface
     public static function new(int|string $chatId, string $phoneNumber, string $firstName): self
     {
         return new self($chatId, $phoneNumber, $firstName);
+    }
+
+    /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     */
+    public function messageThreadId(?int $messageThreadId): self
+    {
+        $this->messageThreadId = $messageThreadId;
+        return $this;
     }
 
     /**
@@ -103,9 +114,9 @@ class SendContactMethod implements ToArrayInterface
 
     /**
      * Additional interface options. A JSON-serialized object for an
-     * [inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating),
-     * [custom reply keyboard](https://core.telegram.org/bots#keyboards), instructions to remove keyboard or to force a
-     * reply from the user.
+     * [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards),
+     * [custom reply keyboard](https://core.telegram.org/bots/features#keyboards), instructions to remove reply
+     * keyboard or to force a reply from the user.
      */
     public function replyMarkup(?ReplyMarkup $replyMarkup): self
     {
@@ -117,6 +128,7 @@ class SendContactMethod implements ToArrayInterface
     {
         $data = [
             'chat_id' => $this->chatId,
+            'message_thread_id' => $this->messageThreadId,
             'phone_number' => $this->phoneNumber,
             'first_name' => $this->firstName,
             'last_name' => $this->lastName,

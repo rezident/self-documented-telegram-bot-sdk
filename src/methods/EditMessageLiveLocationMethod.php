@@ -14,7 +14,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned,
  * otherwise *True* is returned.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#editmessagelivelocation
  */
@@ -104,8 +104,7 @@ class EditMessageLiveLocationMethod implements ToArrayInterface
     }
 
     /**
-     * A JSON-serialized object for a new
-     * [inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating).
+     * A JSON-serialized object for a new [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards).
      */
     public function replyMarkup(?InlineKeyboardMarkup $replyMarkup): self
     {

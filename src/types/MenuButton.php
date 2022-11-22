@@ -18,7 +18,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * private chat, then it is applied in the chat. Otherwise the default menu button is applied. By default, the menu
  * button opens the list of bot commands.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#menubutton
  */

@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an
  * administrator for this to work and must have the appropriate administrator rights. Returns *True* on success.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#unbanchatsenderchat
  */

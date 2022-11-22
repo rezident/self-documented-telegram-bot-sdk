@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfString;
  * Represents an issue with a list of scans. The error is considered resolved when the list of files containing the
  * scans changes.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#passportelementerrorfiles
  */

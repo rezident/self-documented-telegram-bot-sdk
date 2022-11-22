@@ -9,10 +9,10 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\BotCommandScope;
 
 /**
  * Use this method to change the list of the bot's commands. See
- * [](https://core.telegram.org/bots#commands)<https://core.telegram.org/bots#commands> for more details about bot
- * commands. Returns *True* on success.
+ * [this manual](https://core.telegram.org/bots/features#commands) for more details about bot commands. Returns *True*
+ * on success.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setmycommands
  */

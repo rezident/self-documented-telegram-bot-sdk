@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineMode\SentWebAppMessage;
  * a corresponding message on behalf of the user to the chat from which the query originated. On success, a
  * [SentWebAppMessage](https://core.telegram.org/bots/api#sentwebappmessage) object is returned.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#answerwebappquery
  */

@@ -16,12 +16,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * success, the sent [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send voice
  * messages of up to 50 MB in size, this limit may be changed in the future.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendvoice
  */
 class SendVoiceMethod implements ToArrayInterface
 {
+    private ?int $messageThreadId = null;
+
     private ?string $caption = null;
 
     private ?string $parseMode = null;
@@ -55,6 +57,15 @@ class SendVoiceMethod implements ToArrayInterface
     public static function new(int|string $chatId, InputFile|string $voice): self
     {
         return new self($chatId, $voice);
+    }
+
+    /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     */
+    public function messageThreadId(?int $messageThreadId): self
+    {
+        $this->messageThreadId = $messageThreadId;
+        return $this;
     }
 
     /**
@@ -134,9 +145,9 @@ class SendVoiceMethod implements ToArrayInterface
 
     /**
      * Additional interface options. A JSON-serialized object for an
-     * [inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating),
-     * [custom reply keyboard](https://core.telegram.org/bots#keyboards), instructions to remove reply keyboard or to
-     * force a reply from the user.
+     * [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards),
+     * [custom reply keyboard](https://core.telegram.org/bots/features#keyboards), instructions to remove reply
+     * keyboard or to force a reply from the user.
      */
     public function replyMarkup(?ReplyMarkup $replyMarkup): self
     {
@@ -148,6 +159,7 @@ class SendVoiceMethod implements ToArrayInterface
     {
         $data = [
             'chat_id' => $this->chatId,
+            'message_thread_id' => $this->messageThreadId,
             'voice' => $this->voice,
             'caption' => $this->caption,
             'parse_mode' => $this->parseMode,

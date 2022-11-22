@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfPollOption;
 /**
  * This object contains information about a poll.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#poll
  */

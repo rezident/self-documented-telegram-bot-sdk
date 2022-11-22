@@ -11,12 +11,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * Use this method to send a game. On success, the sent [Message](https://core.telegram.org/bots/api#message) is
  * returned.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendgame
  */
 class SendGameMethod implements ToArrayInterface
 {
+    private ?int $messageThreadId = null;
+
     private ?bool $disableNotification = null;
 
     private ?bool $protectContent = null;
@@ -39,6 +41,15 @@ class SendGameMethod implements ToArrayInterface
     public static function new(int $chatId, string $gameShortName): self
     {
         return new self($chatId, $gameShortName);
+    }
+
+    /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     */
+    public function messageThreadId(?int $messageThreadId): self
+    {
+        $this->messageThreadId = $messageThreadId;
+        return $this;
     }
 
     /**
@@ -79,9 +90,8 @@ class SendGameMethod implements ToArrayInterface
     }
 
     /**
-     * A JSON-serialized object for an
-     * [inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating). If empty, one 'Play
-     * game\_title' button will be shown. If not empty, the first button must launch the game.
+     * A JSON-serialized object for an [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards). If
+     * empty, one 'Play game\_title' button will be shown. If not empty, the first button must launch the game.
      */
     public function replyMarkup(?InlineKeyboardMarkup $replyMarkup): self
     {
@@ -93,6 +103,7 @@ class SendGameMethod implements ToArrayInterface
     {
         $data = [
             'chat_id' => $this->chatId,
+            'message_thread_id' => $this->messageThreadId,
             'game_short_name' => $this->gameShortName,
             'disable_notification' => $this->disableNotification,
             'protect_content' => $this->protectContent,

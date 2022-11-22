@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
  *
  * **Note:** This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
  *
- * @version 6.2
+ * @version 6.3
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultcontact
  */
@@ -70,8 +70,7 @@ class InlineQueryResultContact implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * [Inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating) attached to the
-     * message
+     * [Inline keyboard](https://core.telegram.org/bots/features#inline-keyboards) attached to the message
      */
     public function replyMarkup(?InlineKeyboardMarkup $replyMarkup): self
     {
@@ -164,8 +163,7 @@ class InlineQueryResultContact implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * [Inline keyboard](https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating) attached to the
-     * message
+     * [Inline keyboard](https://core.telegram.org/bots/features#inline-keyboards) attached to the message
      */
     public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
