@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\ChatAdministratorRights;
  * Use this method to get the current default administrator rights of the bot. Returns
  * [ChatAdministratorRights](https://core.telegram.org/bots/api#chatadministratorrights) on success.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getmydefaultadministratorrights
  */

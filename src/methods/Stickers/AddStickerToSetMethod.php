@@ -13,7 +13,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Stickers\MaskPosition;
  * to them. Animated sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns
  * *True* on success.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#addstickertoset
  */

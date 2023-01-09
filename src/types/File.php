@@ -13,7 +13,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  *
  * > The maximum file size to download is 20 MB
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#file
  */

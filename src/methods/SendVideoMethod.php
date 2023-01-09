@@ -15,7 +15,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send video files of up to 50 MB
  * in size, this limit may be changed in the future.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendvideo
  */
@@ -36,6 +36,8 @@ class SendVideoMethod implements ToArrayInterface
     private ?string $parseMode = null;
 
     private ?ArrayOfMessageEntity $captionEntities = null;
+
+    private ?bool $hasSpoiler = null;
 
     private ?bool $supportsStreaming = null;
 
@@ -146,6 +148,15 @@ class SendVideoMethod implements ToArrayInterface
     }
 
     /**
+     * Pass *True* if the video needs to be covered with a spoiler animation
+     */
+    public function hasSpoiler(?bool $hasSpoiler): self
+    {
+        $this->hasSpoiler = $hasSpoiler;
+        return $this;
+    }
+
+    /**
      * Pass *True* if the uploaded video is suitable for streaming
      */
     public function supportsStreaming(?bool $supportsStreaming): self
@@ -216,6 +227,7 @@ class SendVideoMethod implements ToArrayInterface
             'caption' => $this->caption,
             'parse_mode' => $this->parseMode,
             'caption_entities' => $this->captionEntities,
+            'has_spoiler' => $this->hasSpoiler,
             'supports_streaming' => $this->supportsStreaming,
             'disable_notification' => $this->disableNotification,
             'protect_content' => $this->protectContent,

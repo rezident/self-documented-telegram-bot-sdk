@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * This object represents a file uploaded to Telegram Passport. Currently all Telegram Passport files are in JPEG format
  * when decrypted and don't exceed 10MB.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#passportfile
  */

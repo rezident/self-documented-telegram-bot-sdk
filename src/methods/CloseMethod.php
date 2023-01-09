@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * return error 429 in the first 10 minutes after the bot is launched. Returns *True* on success. Requires no
  * parameters.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#close
  */

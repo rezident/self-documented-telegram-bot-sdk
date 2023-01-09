@@ -16,7 +16,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\TelegramPassport\PassportData;
 /**
  * This object represents a message.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#message
  */
@@ -80,6 +80,8 @@ class Message implements FromArrayInterface, ToArrayInterface
 
     private ?ArrayOfMessageEntity $captionEntities = null;
 
+    private ?bool $hasMediaSpoiler = null;
+
     private ?Contact $contact = null;
 
     private ?Dice $dice = null;
@@ -122,15 +124,23 @@ class Message implements FromArrayInterface, ToArrayInterface
 
     private ?string $connectedWebsite = null;
 
+    private ?WriteAccessAllowed $writeAccessAllowed = null;
+
     private ?PassportData $passportData = null;
 
     private ?ProximityAlertTriggered $proximityAlertTriggered = null;
 
     private ?ForumTopicCreated $forumTopicCreated = null;
 
+    private ?ForumTopicEdited $forumTopicEdited = null;
+
     private ?ForumTopicClosed $forumTopicClosed = null;
 
     private ?ForumTopicReopened $forumTopicReopened = null;
+
+    private ?GeneralForumTopicHidden $generalForumTopicHidden = null;
+
+    private ?GeneralForumTopicUnhidden $generalForumTopicUnhidden = null;
 
     private ?VideoChatScheduled $videoChatScheduled = null;
 
@@ -431,6 +441,15 @@ class Message implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * *True*, if the message media is covered by a spoiler animation
+     */
+    public function hasMediaSpoiler(?bool $hasMediaSpoiler): self
+    {
+        $this->hasMediaSpoiler = $hasMediaSpoiler;
+        return $this;
+    }
+
+    /**
      * Message is a shared contact, information about the contact
      */
     public function contact(?Contact $contact): self
@@ -636,6 +655,15 @@ class Message implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * Service message: the user allowed the bot added to the attachment menu to write messages
+     */
+    public function writeAccessAllowed(?WriteAccessAllowed $writeAccessAllowed): self
+    {
+        $this->writeAccessAllowed = $writeAccessAllowed;
+        return $this;
+    }
+
+    /**
      * Telegram Passport data
      */
     public function passportData(?PassportData $passportData): self
@@ -663,6 +691,15 @@ class Message implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * Service message: forum topic edited
+     */
+    public function forumTopicEdited(?ForumTopicEdited $forumTopicEdited): self
+    {
+        $this->forumTopicEdited = $forumTopicEdited;
+        return $this;
+    }
+
+    /**
      * Service message: forum topic closed
      */
     public function forumTopicClosed(?ForumTopicClosed $forumTopicClosed): self
@@ -677,6 +714,24 @@ class Message implements FromArrayInterface, ToArrayInterface
     public function forumTopicReopened(?ForumTopicReopened $forumTopicReopened): self
     {
         $this->forumTopicReopened = $forumTopicReopened;
+        return $this;
+    }
+
+    /**
+     * Service message: the 'General' forum topic hidden
+     */
+    public function generalForumTopicHidden(?GeneralForumTopicHidden $generalForumTopicHidden): self
+    {
+        $this->generalForumTopicHidden = $generalForumTopicHidden;
+        return $this;
+    }
+
+    /**
+     * Service message: the 'General' forum topic unhidden
+     */
+    public function generalForumTopicUnhidden(?GeneralForumTopicUnhidden $generalForumTopicUnhidden): self
+    {
+        $this->generalForumTopicUnhidden = $generalForumTopicUnhidden;
         return $this;
     }
 
@@ -1002,6 +1057,14 @@ class Message implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * *True*, if the message media is covered by a spoiler animation
+     */
+    public function getHasMediaSpoiler(): ?bool
+    {
+        return $this->hasMediaSpoiler;
+    }
+
+    /**
      * Message is a shared contact, information about the contact
      */
     public function getContact(): ?Contact
@@ -1186,6 +1249,14 @@ class Message implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * Service message: the user allowed the bot added to the attachment menu to write messages
+     */
+    public function getWriteAccessAllowed(): ?WriteAccessAllowed
+    {
+        return $this->writeAccessAllowed;
+    }
+
+    /**
      * Telegram Passport data
      */
     public function getPassportData(): ?PassportData
@@ -1210,6 +1281,14 @@ class Message implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * Service message: forum topic edited
+     */
+    public function getForumTopicEdited(): ?ForumTopicEdited
+    {
+        return $this->forumTopicEdited;
+    }
+
+    /**
      * Service message: forum topic closed
      */
     public function getForumTopicClosed(): ?ForumTopicClosed
@@ -1223,6 +1302,22 @@ class Message implements FromArrayInterface, ToArrayInterface
     public function getForumTopicReopened(): ?ForumTopicReopened
     {
         return $this->forumTopicReopened;
+    }
+
+    /**
+     * Service message: the 'General' forum topic hidden
+     */
+    public function getGeneralForumTopicHidden(): ?GeneralForumTopicHidden
+    {
+        return $this->generalForumTopicHidden;
+    }
+
+    /**
+     * Service message: the 'General' forum topic unhidden
+     */
+    public function getGeneralForumTopicUnhidden(): ?GeneralForumTopicUnhidden
+    {
+        return $this->generalForumTopicUnhidden;
     }
 
     /**
@@ -1310,6 +1405,7 @@ class Message implements FromArrayInterface, ToArrayInterface
         $instance->voice = Voice::fromArray($array['voice'] ?? null);
         $instance->caption = $array['caption'] ?? null;
         $instance->captionEntities = ArrayOfMessageEntity::fromArray($array['caption_entities'] ?? null);
+        $instance->hasMediaSpoiler = $array['has_media_spoiler'] ?? null;
         $instance->contact = Contact::fromArray($array['contact'] ?? null);
         $instance->dice = Dice::fromArray($array['dice'] ?? null);
         $instance->game = Game::fromArray($array['game'] ?? null);
@@ -1331,11 +1427,15 @@ class Message implements FromArrayInterface, ToArrayInterface
         $instance->invoice = Invoice::fromArray($array['invoice'] ?? null);
         $instance->successfulPayment = SuccessfulPayment::fromArray($array['successful_payment'] ?? null);
         $instance->connectedWebsite = $array['connected_website'] ?? null;
+        $instance->writeAccessAllowed = WriteAccessAllowed::fromArray($array['write_access_allowed'] ?? null);
         $instance->passportData = PassportData::fromArray($array['passport_data'] ?? null);
         $instance->proximityAlertTriggered = ProximityAlertTriggered::fromArray($array['proximity_alert_triggered'] ?? null);
         $instance->forumTopicCreated = ForumTopicCreated::fromArray($array['forum_topic_created'] ?? null);
+        $instance->forumTopicEdited = ForumTopicEdited::fromArray($array['forum_topic_edited'] ?? null);
         $instance->forumTopicClosed = ForumTopicClosed::fromArray($array['forum_topic_closed'] ?? null);
         $instance->forumTopicReopened = ForumTopicReopened::fromArray($array['forum_topic_reopened'] ?? null);
+        $instance->generalForumTopicHidden = GeneralForumTopicHidden::fromArray($array['general_forum_topic_hidden'] ?? null);
+        $instance->generalForumTopicUnhidden = GeneralForumTopicUnhidden::fromArray($array['general_forum_topic_unhidden'] ?? null);
         $instance->videoChatScheduled = VideoChatScheduled::fromArray($array['video_chat_scheduled'] ?? null);
         $instance->videoChatStarted = VideoChatStarted::fromArray($array['video_chat_started'] ?? null);
         $instance->videoChatEnded = VideoChatEnded::fromArray($array['video_chat_ended'] ?? null);
@@ -1381,6 +1481,7 @@ class Message implements FromArrayInterface, ToArrayInterface
             'voice' => $this->voice,
             'caption' => $this->caption,
             'caption_entities' => $this->captionEntities,
+            'has_media_spoiler' => $this->hasMediaSpoiler,
             'contact' => $this->contact,
             'dice' => $this->dice,
             'game' => $this->game,
@@ -1402,11 +1503,15 @@ class Message implements FromArrayInterface, ToArrayInterface
             'invoice' => $this->invoice,
             'successful_payment' => $this->successfulPayment,
             'connected_website' => $this->connectedWebsite,
+            'write_access_allowed' => $this->writeAccessAllowed,
             'passport_data' => $this->passportData,
             'proximity_alert_triggered' => $this->proximityAlertTriggered,
             'forum_topic_created' => $this->forumTopicCreated,
+            'forum_topic_edited' => $this->forumTopicEdited,
             'forum_topic_closed' => $this->forumTopicClosed,
             'forum_topic_reopened' => $this->forumTopicReopened,
+            'general_forum_topic_hidden' => $this->generalForumTopicHidden,
+            'general_forum_topic_unhidden' => $this->generalForumTopicUnhidden,
             'video_chat_scheduled' => $this->videoChatScheduled,
             'video_chat_started' => $this->videoChatStarted,
             'video_chat_ended' => $this->videoChatEnded,

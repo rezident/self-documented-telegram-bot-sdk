@@ -5,7 +5,7 @@ namespace Rezident\SelfDocumentedTelegramBotSdk\types\Additional;
 use Rezident\SelfDocumentedTelegramBotSdk\base\ArrayOf;
 
 /**
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  */
 class ArrayOfArrayOfKeyboardButton extends ArrayOf

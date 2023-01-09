@@ -13,7 +13,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * Use this method to send invoices. On success, the sent [Message](https://core.telegram.org/bots/api#message) is
  * returned.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendinvoice
  */

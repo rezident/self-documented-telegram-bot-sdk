@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\User;
 /**
  * This object contains information about an incoming shipping query.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#shippingquery
  */

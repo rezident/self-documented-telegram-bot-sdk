@@ -6,7 +6,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\base\ArrayOf;
 use Rezident\SelfDocumentedTelegramBotSdk\types\Stickers\Sticker;
 
 /**
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  */
 class ArrayOfSticker extends ArrayOf

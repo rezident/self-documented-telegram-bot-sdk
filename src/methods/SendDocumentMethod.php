@@ -13,7 +13,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * Use this method to send general files. On success, the sent [Message](https://core.telegram.org/bots/api#message) is
  * returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#senddocument
  */

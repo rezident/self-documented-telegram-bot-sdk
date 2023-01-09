@@ -11,12 +11,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ReplyMarkup;
  * This object represents a [custom keyboard](https://core.telegram.org/bots/features#keyboards) with reply options (see
  * [Introduction to bots](https://core.telegram.org/bots/features#keyboards) for details and examples).
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#replykeyboardmarkup
  */
 class ReplyKeyboardMarkup extends ReplyMarkup implements FromArrayInterface, ToArrayInterface
 {
+    private ?bool $isPersistent = null;
+
     private ?bool $resizeKeyboard = null;
 
     private ?bool $oneTimeKeyboard = null;
@@ -37,6 +39,16 @@ class ReplyKeyboardMarkup extends ReplyMarkup implements FromArrayInterface, ToA
     public static function new(ArrayOfArrayOfKeyboardButton $keyboard): self
     {
         return new self($keyboard);
+    }
+
+    /**
+     * Requests clients to always show the keyboard when the regular keyboard is hidden. Defaults to *false*, in which
+     * case the custom keyboard can be hidden and opened with a keyboard icon.
+     */
+    public function isPersistent(?bool $isPersistent): self
+    {
+        $this->isPersistent = $isPersistent;
+        return $this;
     }
 
     /**
@@ -94,6 +106,15 @@ class ReplyKeyboardMarkup extends ReplyMarkup implements FromArrayInterface, ToA
     }
 
     /**
+     * Requests clients to always show the keyboard when the regular keyboard is hidden. Defaults to *false*, in which
+     * case the custom keyboard can be hidden and opened with a keyboard icon.
+     */
+    public function getIsPersistent(): ?bool
+    {
+        return $this->isPersistent;
+    }
+
+    /**
      * Requests clients to resize the keyboard vertically for optimal fit (e.g., make the keyboard smaller if there are
      * just two rows of buttons). Defaults to *false*, in which case the custom keyboard is always of the same height
      * as the app's standard keyboard.
@@ -142,6 +163,7 @@ class ReplyKeyboardMarkup extends ReplyMarkup implements FromArrayInterface, ToA
 
         $instance = new self(ArrayOfArrayOfKeyboardButton::fromArray($array['keyboard']));
 
+        $instance->isPersistent = $array['is_persistent'] ?? null;
         $instance->resizeKeyboard = $array['resize_keyboard'] ?? null;
         $instance->oneTimeKeyboard = $array['one_time_keyboard'] ?? null;
         $instance->inputFieldPlaceholder = $array['input_field_placeholder'] ?? null;
@@ -154,6 +176,7 @@ class ReplyKeyboardMarkup extends ReplyMarkup implements FromArrayInterface, ToA
     {
         $data = [
             'keyboard' => $this->keyboard,
+            'is_persistent' => $this->isPersistent,
             'resize_keyboard' => $this->resizeKeyboard,
             'one_time_keyboard' => $this->oneTimeKeyboard,
             'input_field_placeholder' => $this->inputFieldPlaceholder,

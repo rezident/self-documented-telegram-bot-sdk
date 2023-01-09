@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server
  * for 10 minutes. Returns *True* on success. Requires no parameters.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#logout
  */

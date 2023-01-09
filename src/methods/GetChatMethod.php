@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Chat;
  * current username of a user, group or channel, etc.). Returns a [Chat](https://core.telegram.org/bots/api#chat) object
  * on success.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getchat
  */

@@ -13,7 +13,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * Use this method to send photos. On success, the sent [Message](https://core.telegram.org/bots/api#message) is
  * returned.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendphoto
  */
@@ -26,6 +26,8 @@ class SendPhotoMethod implements ToArrayInterface
     private ?string $parseMode = null;
 
     private ?ArrayOfMessageEntity $captionEntities = null;
+
+    private ?bool $hasSpoiler = null;
 
     private ?bool $disableNotification = null;
 
@@ -95,6 +97,15 @@ class SendPhotoMethod implements ToArrayInterface
     }
 
     /**
+     * Pass *True* if the photo needs to be covered with a spoiler animation
+     */
+    public function hasSpoiler(?bool $hasSpoiler): self
+    {
+        $this->hasSpoiler = $hasSpoiler;
+        return $this;
+    }
+
+    /**
      * Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a
      * notification with no sound.
      */
@@ -152,6 +163,7 @@ class SendPhotoMethod implements ToArrayInterface
             'caption' => $this->caption,
             'parse_mode' => $this->parseMode,
             'caption_entities' => $this->captionEntities,
+            'has_spoiler' => $this->hasSpoiler,
             'disable_notification' => $this->disableNotification,
             'protect_content' => $this->protectContent,
             'reply_to_message_id' => $this->replyToMessageId,

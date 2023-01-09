@@ -7,10 +7,11 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 use Rezident\SelfDocumentedTelegramBotSdk\types\ChatMember;
 
 /**
- * Use this method to get information about a member of a chat. Returns a
- * [ChatMember](https://core.telegram.org/bots/api#chatmember) object on success.
+ * Use this method to get information about a member of a chat. The method is guaranteed to work for other users, only
+ * if the bot is an administrator in the chat. Returns a [ChatMember](https://core.telegram.org/bots/api#chatmember)
+ * object on success.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getchatmember
  */

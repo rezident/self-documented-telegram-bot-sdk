@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\MediaGroupInterface;
 /**
  * Represents a photo to be sent.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inputmediaphoto
  */
@@ -21,6 +21,8 @@ class InputMediaPhoto extends InputMedia implements FromArrayInterface, ToArrayI
     private ?string $parseMode = null;
 
     private ?ArrayOfMessageEntity $captionEntities = null;
+
+    private ?bool $hasSpoiler = null;
 
     private function __construct(private string $type, private string $media)
     {
@@ -68,6 +70,15 @@ class InputMediaPhoto extends InputMedia implements FromArrayInterface, ToArrayI
     }
 
     /**
+     * Pass *True* if the photo needs to be covered with a spoiler animation
+     */
+    public function hasSpoiler(?bool $hasSpoiler): self
+    {
+        $this->hasSpoiler = $hasSpoiler;
+        return $this;
+    }
+
+    /**
      * Type of the result, must be *photo*
      */
     public function getType(): ?string
@@ -111,6 +122,14 @@ class InputMediaPhoto extends InputMedia implements FromArrayInterface, ToArrayI
         return $this->captionEntities;
     }
 
+    /**
+     * Pass *True* if the photo needs to be covered with a spoiler animation
+     */
+    public function getHasSpoiler(): ?bool
+    {
+        return $this->hasSpoiler;
+    }
+
     public static function fromArray(?array $array): ?self
     {
         if ($array === null) {
@@ -122,6 +141,7 @@ class InputMediaPhoto extends InputMedia implements FromArrayInterface, ToArrayI
         $instance->caption = $array['caption'] ?? null;
         $instance->parseMode = $array['parse_mode'] ?? null;
         $instance->captionEntities = ArrayOfMessageEntity::fromArray($array['caption_entities'] ?? null);
+        $instance->hasSpoiler = $array['has_spoiler'] ?? null;
 
         return $instance;
     }
@@ -134,6 +154,7 @@ class InputMediaPhoto extends InputMedia implements FromArrayInterface, ToArrayI
             'caption' => $this->caption,
             'parse_mode' => $this->parseMode,
             'caption_entities' => $this->captionEntities,
+            'has_spoiler' => $this->hasSpoiler,
         ];
 
         return array_filter($data, fn($val) => $val !== null);

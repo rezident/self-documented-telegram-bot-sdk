@@ -14,7 +14,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * a game for your bot via [@BotFather](https://t.me/botfather) and accept the terms. Otherwise, you may use links like
  * `t.me/your_bot?start=XXXX` that open your bot with a parameter.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#answercallbackquery
  */

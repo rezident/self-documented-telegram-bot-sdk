@@ -10,32 +10,49 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * chat for this to work and must have *can\_manage\_topics* administrator rights, unless it is the creator of the
  * topic. Returns *True* on success.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#editforumtopic
  */
 class EditForumTopicMethod implements ToArrayInterface
 {
-    private function __construct(
-        private int|string $chatId,
-        private int $messageThreadId,
-        private string $name,
-        private string $iconCustomEmojiId
-    ) {
+    private ?string $name = null;
+
+    private ?string $iconCustomEmojiId = null;
+
+    private function __construct(private int|string $chatId, private int $messageThreadId)
+    {
     }
 
     /**
      * @param int|string $chatId Unique identifier for the target chat or username of the target supergroup (in the
      *                           format `@supergroupusername`)
      * @param int $messageThreadId Unique identifier for the target message thread of the forum topic
-     * @param string $name New topic name, 1-128 characters
-     * @param string $iconCustomEmojiId New unique identifier of the custom emoji shown as the topic icon. Use
-     *                                  [getForumTopicIconStickers](https://core.telegram.org/bots/api#getforumtopiciconstickers)
-     *                                  to get all allowed custom emoji identifiers.
      */
-    public static function new(int|string $chatId, int $messageThreadId, string $name, string $iconCustomEmojiId): self
+    public static function new(int|string $chatId, int $messageThreadId): self
     {
-        return new self($chatId, $messageThreadId, $name, $iconCustomEmojiId);
+        return new self($chatId, $messageThreadId);
+    }
+
+    /**
+     * New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept
+     */
+    public function name(?string $name): self
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * New unique identifier of the custom emoji shown as the topic icon. Use
+     * [getForumTopicIconStickers](https://core.telegram.org/bots/api#getforumtopiciconstickers) to get all allowed
+     * custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be
+     * kept
+     */
+    public function iconCustomEmojiId(?string $iconCustomEmojiId): self
+    {
+        $this->iconCustomEmojiId = $iconCustomEmojiId;
+        return $this;
     }
 
     public function toArray(): array

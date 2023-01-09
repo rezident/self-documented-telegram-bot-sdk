@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * This object represents one size of a photo or a [file](https://core.telegram.org/bots/api#document) /
  * [sticker](https://core.telegram.org/bots/api#sticker) thumbnail.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#photosize
  */

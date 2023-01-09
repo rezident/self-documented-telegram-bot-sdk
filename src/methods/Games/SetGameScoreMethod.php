@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * message, the [Message](https://core.telegram.org/bots/api#message) is returned, otherwise *True* is returned. Returns
  * an error, if the new score is not greater than the user's current score in the chat and *force* is *False*.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setgamescore
  */

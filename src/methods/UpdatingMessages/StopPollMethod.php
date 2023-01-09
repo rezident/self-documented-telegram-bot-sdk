@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Poll;
  * Use this method to stop a poll which was sent by the bot. On success, the stopped
  * [Poll](https://core.telegram.org/bots/api#poll) is returned.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#stoppoll
  */

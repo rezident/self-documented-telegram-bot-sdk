@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\ChatInviteLink;
  * administrator rights. Returns the revoked invite link as
  * [ChatInviteLink](https://core.telegram.org/bots/api#chatinvitelink) object.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#revokechatinvitelink
  */

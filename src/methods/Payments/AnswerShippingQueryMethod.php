@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfShippingOption
  * send an [Update](https://core.telegram.org/bots/api#update) with a *shipping\_query* field to the bot. Use this
  * method to reply to shipping queries. On success, *True* is returned.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#answershippingquery
  */

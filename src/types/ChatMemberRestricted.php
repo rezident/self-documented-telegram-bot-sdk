@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * Represents a [chat member](https://core.telegram.org/bots/api#chatmember) that is under certain restrictions in the
  * chat. Supergroups only.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chatmemberrestricted
  */

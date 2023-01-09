@@ -17,12 +17,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  *
  * We only recommend using this method when a response from the bot will take a **noticeable** amount of time to arrive.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendchataction
  */
 class SendChatActionMethod implements ToArrayInterface
 {
+    private ?int $messageThreadId = null;
+
     private function __construct(private int|string $chatId, private string $action)
     {
     }
@@ -46,10 +48,20 @@ class SendChatActionMethod implements ToArrayInterface
         return new self($chatId, $action);
     }
 
+    /**
+     * Unique identifier for the target message thread; supergroups only
+     */
+    public function messageThreadId(?int $messageThreadId): self
+    {
+        $this->messageThreadId = $messageThreadId;
+        return $this;
+    }
+
     public function toArray(): array
     {
         $data = [
             'chat_id' => $this->chatId,
+            'message_thread_id' => $this->messageThreadId,
             'action' => $this->action,
         ];
 

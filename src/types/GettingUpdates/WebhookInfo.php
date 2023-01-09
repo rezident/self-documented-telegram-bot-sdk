@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfString;
 /**
  * Describes the current status of a webhook.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#webhookinfo
  */

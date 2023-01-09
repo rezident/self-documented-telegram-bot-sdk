@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\UserProfilePhotos;
  * Use this method to get a list of profile pictures for a user. Returns a
  * [UserProfilePhotos](https://core.telegram.org/bots/api#userprofilephotos) object.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getuserprofilephotos
  */

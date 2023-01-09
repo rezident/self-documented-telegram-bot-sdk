@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfString;
 /**
  * This object represents a chat.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chat
  */
@@ -52,6 +52,10 @@ class Chat implements FromArrayInterface, ToArrayInterface
     private ?int $slowModeDelay = null;
 
     private ?int $messageAutoDeleteTime = null;
+
+    private ?bool $hasAggressiveAntiSpamEnabled = null;
+
+    private ?bool $hasHiddenMembers = null;
 
     private ?bool $hasProtectedContent = null;
 
@@ -263,6 +267,26 @@ class Chat implements FromArrayInterface, ToArrayInterface
     public function messageAutoDeleteTime(?int $messageAutoDeleteTime): self
     {
         $this->messageAutoDeleteTime = $messageAutoDeleteTime;
+        return $this;
+    }
+
+    /**
+     * *True*, if aggressive anti-spam checks are enabled in the supergroup. The field is only available to chat
+     * administrators. Returned only in [getChat](https://core.telegram.org/bots/api#getchat).
+     */
+    public function hasAggressiveAntiSpamEnabled(?bool $hasAggressiveAntiSpamEnabled): self
+    {
+        $this->hasAggressiveAntiSpamEnabled = $hasAggressiveAntiSpamEnabled;
+        return $this;
+    }
+
+    /**
+     * *True*, if non-administrators can only get the list of bots and administrators in the chat. Returned only in
+     * [getChat](https://core.telegram.org/bots/api#getchat).
+     */
+    public function hasHiddenMembers(?bool $hasHiddenMembers): self
+    {
+        $this->hasHiddenMembers = $hasHiddenMembers;
         return $this;
     }
 
@@ -506,6 +530,24 @@ class Chat implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * *True*, if aggressive anti-spam checks are enabled in the supergroup. The field is only available to chat
+     * administrators. Returned only in [getChat](https://core.telegram.org/bots/api#getchat).
+     */
+    public function getHasAggressiveAntiSpamEnabled(): ?bool
+    {
+        return $this->hasAggressiveAntiSpamEnabled;
+    }
+
+    /**
+     * *True*, if non-administrators can only get the list of bots and administrators in the chat. Returned only in
+     * [getChat](https://core.telegram.org/bots/api#getchat).
+     */
+    public function getHasHiddenMembers(): ?bool
+    {
+        return $this->hasHiddenMembers;
+    }
+
+    /**
      * *True*, if messages from the chat can't be forwarded to other chats. Returned only in
      * [getChat](https://core.telegram.org/bots/api#getchat).
      */
@@ -580,6 +622,8 @@ class Chat implements FromArrayInterface, ToArrayInterface
         $instance->permissions = ChatPermissions::fromArray($array['permissions'] ?? null);
         $instance->slowModeDelay = $array['slow_mode_delay'] ?? null;
         $instance->messageAutoDeleteTime = $array['message_auto_delete_time'] ?? null;
+        $instance->hasAggressiveAntiSpamEnabled = $array['has_aggressive_anti_spam_enabled'] ?? null;
+        $instance->hasHiddenMembers = $array['has_hidden_members'] ?? null;
         $instance->hasProtectedContent = $array['has_protected_content'] ?? null;
         $instance->stickerSetName = $array['sticker_set_name'] ?? null;
         $instance->canSetStickerSet = $array['can_set_sticker_set'] ?? null;
@@ -613,6 +657,8 @@ class Chat implements FromArrayInterface, ToArrayInterface
             'permissions' => $this->permissions,
             'slow_mode_delay' => $this->slowModeDelay,
             'message_auto_delete_time' => $this->messageAutoDeleteTime,
+            'has_aggressive_anti_spam_enabled' => $this->hasAggressiveAntiSpamEnabled,
+            'has_hidden_members' => $this->hasHiddenMembers,
             'has_protected_content' => $this->hasProtectedContent,
             'sticker_set_name' => $this->stickerSetName,
             'can_set_sticker_set' => $this->canSetStickerSet,

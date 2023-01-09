@@ -14,7 +14,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
  * **Note:** This will only work in Telegram versions released after 9 April, 2016 for static stickers and after 06
  * July, 2019 for [animated stickers](https://telegram.org/blog/animated-stickers). Older clients will ignore them.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultcachedsticker
  */

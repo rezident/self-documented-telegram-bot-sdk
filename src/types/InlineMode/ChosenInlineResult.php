@@ -14,7 +14,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\User;
  * **Note:** It is necessary to enable [inline feedback](https://core.telegram.org/bots/inline#collecting-feedback) via
  * [@BotFather](https://t.me/botfather) in order to receive these objects in updates.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#choseninlineresult
  */

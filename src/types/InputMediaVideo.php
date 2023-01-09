@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\MediaGroupInterface;
 /**
  * Represents a video to be sent.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inputmediavideo
  */
@@ -31,6 +31,8 @@ class InputMediaVideo extends InputMedia implements FromArrayInterface, ToArrayI
     private ?int $duration = null;
 
     private ?bool $supportsStreaming = null;
+
+    private ?bool $hasSpoiler = null;
 
     private function __construct(private string $type, private string $media)
     {
@@ -128,6 +130,15 @@ class InputMediaVideo extends InputMedia implements FromArrayInterface, ToArrayI
     }
 
     /**
+     * Pass *True* if the video needs to be covered with a spoiler animation
+     */
+    public function hasSpoiler(?bool $hasSpoiler): self
+    {
+        $this->hasSpoiler = $hasSpoiler;
+        return $this;
+    }
+
+    /**
      * Type of the result, must be *video*
      */
     public function getType(): ?string
@@ -217,6 +228,14 @@ class InputMediaVideo extends InputMedia implements FromArrayInterface, ToArrayI
         return $this->supportsStreaming;
     }
 
+    /**
+     * Pass *True* if the video needs to be covered with a spoiler animation
+     */
+    public function getHasSpoiler(): ?bool
+    {
+        return $this->hasSpoiler;
+    }
+
     public static function fromArray(?array $array): ?self
     {
         if ($array === null) {
@@ -233,6 +252,7 @@ class InputMediaVideo extends InputMedia implements FromArrayInterface, ToArrayI
         $instance->height = $array['height'] ?? null;
         $instance->duration = $array['duration'] ?? null;
         $instance->supportsStreaming = $array['supports_streaming'] ?? null;
+        $instance->hasSpoiler = $array['has_spoiler'] ?? null;
 
         return $instance;
     }
@@ -250,6 +270,7 @@ class InputMediaVideo extends InputMedia implements FromArrayInterface, ToArrayI
             'height' => $this->height,
             'duration' => $this->duration,
             'supports_streaming' => $this->supportsStreaming,
+            'has_spoiler' => $this->hasSpoiler,
         ];
 
         return array_filter($data, fn($val) => $val !== null);

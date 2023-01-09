@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\User;
  * This object represents an incoming inline query. When the user sends an empty query, your bot could return some
  * default or trending results.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequery
  */

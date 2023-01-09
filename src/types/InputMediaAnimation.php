@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfMessageEntity;
 /**
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inputmediaanimation
  */
@@ -28,6 +28,8 @@ class InputMediaAnimation extends InputMedia implements FromArrayInterface, ToAr
     private ?int $height = null;
 
     private ?int $duration = null;
+
+    private ?bool $hasSpoiler = null;
 
     private function __construct(private string $type, private string $media)
     {
@@ -116,6 +118,15 @@ class InputMediaAnimation extends InputMedia implements FromArrayInterface, ToAr
     }
 
     /**
+     * Pass *True* if the animation needs to be covered with a spoiler animation
+     */
+    public function hasSpoiler(?bool $hasSpoiler): self
+    {
+        $this->hasSpoiler = $hasSpoiler;
+        return $this;
+    }
+
+    /**
      * Type of the result, must be *animation*
      */
     public function getType(): ?string
@@ -197,6 +208,14 @@ class InputMediaAnimation extends InputMedia implements FromArrayInterface, ToAr
         return $this->duration;
     }
 
+    /**
+     * Pass *True* if the animation needs to be covered with a spoiler animation
+     */
+    public function getHasSpoiler(): ?bool
+    {
+        return $this->hasSpoiler;
+    }
+
     public static function fromArray(?array $array): ?self
     {
         if ($array === null) {
@@ -212,6 +231,7 @@ class InputMediaAnimation extends InputMedia implements FromArrayInterface, ToAr
         $instance->width = $array['width'] ?? null;
         $instance->height = $array['height'] ?? null;
         $instance->duration = $array['duration'] ?? null;
+        $instance->hasSpoiler = $array['has_spoiler'] ?? null;
 
         return $instance;
     }
@@ -228,6 +248,7 @@ class InputMediaAnimation extends InputMedia implements FromArrayInterface, ToAr
             'width' => $this->width,
             'height' => $this->height,
             'duration' => $this->duration,
+            'has_spoiler' => $this->hasSpoiler,
         ];
 
         return array_filter($data, fn($val) => $val !== null);

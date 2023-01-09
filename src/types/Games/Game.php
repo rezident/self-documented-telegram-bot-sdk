@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Animation;
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique
  * identifiers.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#game
  */

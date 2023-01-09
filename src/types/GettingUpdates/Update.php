@@ -20,7 +20,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\PollAnswer;
  *
  * At most **one** of the optional parameters can be present in any given update.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#update
  */

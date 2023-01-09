@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * Represents a [chat member](https://core.telegram.org/bots/api#chatmember) that was banned in the chat and can't
  * return to the chat or view chat messages.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chatmemberbanned
  */

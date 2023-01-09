@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfSticker;
  * Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no
  * parameters. Returns an Array of [Sticker](https://core.telegram.org/bots/api#sticker) objects.
  *
- * @version 6.3
+ * @version 6.4
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getforumtopiciconstickers
  */
