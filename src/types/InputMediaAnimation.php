@@ -154,7 +154,6 @@ class InputMediaAnimation extends InputMedia implements FromArrayInterface, ToAr
      * [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files)
      */
     public function getThumb(): InputFile|string|null
-
     {
         return $this->thumb;
     }

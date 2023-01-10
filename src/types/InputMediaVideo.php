@@ -166,7 +166,6 @@ class InputMediaVideo extends InputMedia implements FromArrayInterface, ToArrayI
      * [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files)
      */
     public function getThumb(): InputFile|string|null
-
     {
         return $this->thumb;
     }
