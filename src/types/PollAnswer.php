@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfInteger;
 /**
  * This object represents an answer of a user in a non-anonymous poll.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#pollanswer
  */

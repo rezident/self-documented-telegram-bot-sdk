@@ -8,7 +8,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 /**
  * Use this method for your bot to leave a group, supergroup or channel. Returns *True* on success.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#leavechat
  */

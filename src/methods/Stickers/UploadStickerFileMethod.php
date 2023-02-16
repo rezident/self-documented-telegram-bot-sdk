@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InputFile;
  * methods (can be used multiple times). Returns the uploaded [File](https://core.telegram.org/bots/api#file) on
  * success.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#uploadstickerfile
  */

@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * Use this method to forward messages of any kind. Service messages can't be forwarded. On success, the sent
  * [Message](https://core.telegram.org/bots/api#message) is returned.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#forwardmessage
  */

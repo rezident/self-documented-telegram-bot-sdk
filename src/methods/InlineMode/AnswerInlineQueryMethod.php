@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfInlineQueryRes
  *
  * No more than **50** results per query are allowed.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#answerinlinequery
  */

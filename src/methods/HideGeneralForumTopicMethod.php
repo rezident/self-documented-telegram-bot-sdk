@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * for this to work and must have the *can\_manage\_topics* administrator rights. The topic will be automatically closed
  * if it was open. Returns *True* on success.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#hidegeneralforumtopic
  */

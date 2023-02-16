@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfMessageEntity;
  * Represents the [content](https://core.telegram.org/bots/api#inputmessagecontent) of a text message to be sent as the
  * result of an inline query.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inputtextmessagecontent
  */

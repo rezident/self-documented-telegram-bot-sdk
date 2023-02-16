@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\User;
 /**
  * This object represents one row of the high scores table for a game.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#gamehighscore
  */

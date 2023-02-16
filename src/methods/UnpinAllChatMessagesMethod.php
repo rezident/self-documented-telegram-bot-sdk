@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * administrator in the chat for this to work and must have the 'can\_pin\_messages' administrator right in a supergroup
  * or 'can\_edit\_messages' administrator right in a channel. Returns *True* on success.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#unpinallchatmessages
  */

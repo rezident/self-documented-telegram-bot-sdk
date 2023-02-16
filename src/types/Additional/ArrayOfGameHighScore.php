@@ -6,7 +6,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\base\ArrayOf;
 use Rezident\SelfDocumentedTelegramBotSdk\types\Games\GameHighScore;
 
 /**
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  */
 class ArrayOfGameHighScore extends ArrayOf

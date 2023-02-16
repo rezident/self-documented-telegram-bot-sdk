@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\GettingUpdates\WebhookInfo;
  * [WebhookInfo](https://core.telegram.org/bots/api#webhookinfo) object. If the bot is using
  * [getUpdates](https://core.telegram.org/bots/api#getupdates), will return an object with the *url* field empty.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getwebhookinfo
  */

@@ -16,7 +16,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * success, the sent [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send voice
  * messages of up to 50 MB in size, this limit may be changed in the future.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendvoice
  */

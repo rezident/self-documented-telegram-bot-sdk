@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\ChatInviteLink;
  * [revokeChatInviteLink](https://core.telegram.org/bots/api#revokechatinvitelink). Returns the new invite link as
  * [ChatInviteLink](https://core.telegram.org/bots/api#chatinvitelink) object.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#createchatinvitelink
  */

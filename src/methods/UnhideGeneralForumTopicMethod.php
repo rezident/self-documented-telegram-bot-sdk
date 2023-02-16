@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the
  * chat for this to work and must have the *can\_manage\_topics* administrator rights. Returns *True* on success.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#unhidegeneralforumtopic
  */

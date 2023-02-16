@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
  * Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively,
  * you can use *input\_message\_content* to send a message with the specified content instead of the photo.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultphoto
  */

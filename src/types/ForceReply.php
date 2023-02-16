@@ -29,7 +29,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ReplyMarkup;
  * [ForceReply](https://core.telegram.org/bots/api#forcereply) in your bot's questions, it will receive the user's
  * answers even if it only receives replies, commands and mentions - without any extra work for the user.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#forcereply
  */

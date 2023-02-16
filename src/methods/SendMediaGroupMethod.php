@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfMessage;
  * only grouped in an album with messages of the same type. On success, an array of
  * [Messages](https://core.telegram.org/bots/api#message) that were sent is returned.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendmediagroup
  */

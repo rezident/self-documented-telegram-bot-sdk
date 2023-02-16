@@ -11,12 +11,14 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\ChatPermissions;
  * supergroup for this to work and must have the *can\_restrict\_members* administrator rights. Returns *True* on
  * success.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setchatpermissions
  */
 class SetChatPermissionsMethod implements ToArrayInterface
 {
+    private ?bool $useIndependentChatPermissions = null;
+
     private function __construct(private int|string $chatId, private ChatPermissions $permissions)
     {
     }
@@ -31,11 +33,25 @@ class SetChatPermissionsMethod implements ToArrayInterface
         return new self($chatId, $permissions);
     }
 
+    /**
+     * Pass *True* if chat permissions are set independently. Otherwise, the *can\_send\_other\_messages* and
+     * *can\_add\_web\_page\_previews* permissions will imply the *can\_send\_messages*, *can\_send\_audios*,
+     * *can\_send\_documents*, *can\_send\_photos*, *can\_send\_videos*, *can\_send\_video\_notes*, and
+     * *can\_send\_voice\_notes* permissions; the *can\_send\_polls* permission will imply the *can\_send\_messages*
+     * permission.
+     */
+    public function useIndependentChatPermissions(?bool $useIndependentChatPermissions): self
+    {
+        $this->useIndependentChatPermissions = $useIndependentChatPermissions;
+        return $this;
+    }
+
     public function toArray(): array
     {
         $data = [
             'chat_id' => $this->chatId,
             'permissions' => $this->permissions,
+            'use_independent_chat_permissions' => $this->useIndependentChatPermissions,
         ];
 
         return array_filter($data, fn($val) => $val !== null);

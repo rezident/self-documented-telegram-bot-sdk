@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\BotCommandScope;
  * of [BotCommand](https://core.telegram.org/bots/api#botcommand) objects. If commands aren't set, an empty list is
  * returned.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getmycommands
  */

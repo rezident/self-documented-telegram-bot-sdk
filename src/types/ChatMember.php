@@ -21,20 +21,12 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  *
  * - [ChatMemberBanned](https://core.telegram.org/bots/api#chatmemberbanned)
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chatmember
  */
 abstract class ChatMember implements FromArrayInterface, ToArrayInterface
 {
-    private function __construct()
-    {
-    }
-
-    public static function new(): self
-    {
-        return new self();
-    }
     public static function fromArray(?array $array): ?self
     {
         if ($array === null) {

@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\BotCommandScope;
  * [higher level commands](https://core.telegram.org/bots/api#determining-list-of-commands) will be shown to affected
  * users. Returns *True* on success.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#deletemycommands
  */

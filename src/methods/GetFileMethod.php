@@ -16,7 +16,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\File;
  * **Note:** This function may not preserve the original file name and MIME type. You should save the file's MIME type
  * and name (if available) when the File object is received.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getfile
  */

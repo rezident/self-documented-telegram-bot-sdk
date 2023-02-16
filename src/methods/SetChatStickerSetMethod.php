@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * returned in [getChat](https://core.telegram.org/bots/api#getchat) requests to check if the bot can use this method.
  * Returns *True* on success.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setchatstickerset
  */

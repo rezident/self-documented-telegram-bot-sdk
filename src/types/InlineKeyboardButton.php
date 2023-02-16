@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Games\CallbackGame;
 /**
  * This object represents one button of an inline keyboard. You **must** use exactly one of the optional fields.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinekeyboardbutton
  */

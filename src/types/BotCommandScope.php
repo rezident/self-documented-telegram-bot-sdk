@@ -19,7 +19,7 @@ namespace Rezident\SelfDocumentedTelegramBotSdk\types;
  *
  * - [BotCommandScopeChatMember](https://core.telegram.org/bots/api#botcommandscopechatmember)
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#botcommandscope
  */

@@ -16,7 +16,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\TelegramPassport\PassportData;
 /**
  * This object represents a message.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#message
  */
@@ -121,6 +121,10 @@ class Message implements FromArrayInterface, ToArrayInterface
     private ?Invoice $invoice = null;
 
     private ?SuccessfulPayment $successfulPayment = null;
+
+    private ?UserShared $userShared = null;
+
+    private ?ChatShared $chatShared = null;
 
     private ?string $connectedWebsite = null;
 
@@ -641,6 +645,24 @@ class Message implements FromArrayInterface, ToArrayInterface
     public function successfulPayment(?SuccessfulPayment $successfulPayment): self
     {
         $this->successfulPayment = $successfulPayment;
+        return $this;
+    }
+
+    /**
+     * Service message: a user was shared with the bot
+     */
+    public function userShared(?UserShared $userShared): self
+    {
+        $this->userShared = $userShared;
+        return $this;
+    }
+
+    /**
+     * Service message: a chat was shared with the bot
+     */
+    public function chatShared(?ChatShared $chatShared): self
+    {
+        $this->chatShared = $chatShared;
         return $this;
     }
 
@@ -1240,6 +1262,22 @@ class Message implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * Service message: a user was shared with the bot
+     */
+    public function getUserShared(): ?UserShared
+    {
+        return $this->userShared;
+    }
+
+    /**
+     * Service message: a chat was shared with the bot
+     */
+    public function getChatShared(): ?ChatShared
+    {
+        return $this->chatShared;
+    }
+
+    /**
      * The domain name of the website on which the user has logged in.
      * [More about Telegram Login »](https://core.telegram.org/widgets/login)
      */
@@ -1426,6 +1464,8 @@ class Message implements FromArrayInterface, ToArrayInterface
         $instance->pinnedMessage = Message::fromArray($array['pinned_message'] ?? null);
         $instance->invoice = Invoice::fromArray($array['invoice'] ?? null);
         $instance->successfulPayment = SuccessfulPayment::fromArray($array['successful_payment'] ?? null);
+        $instance->userShared = UserShared::fromArray($array['user_shared'] ?? null);
+        $instance->chatShared = ChatShared::fromArray($array['chat_shared'] ?? null);
         $instance->connectedWebsite = $array['connected_website'] ?? null;
         $instance->writeAccessAllowed = WriteAccessAllowed::fromArray($array['write_access_allowed'] ?? null);
         $instance->passportData = PassportData::fromArray($array['passport_data'] ?? null);
@@ -1502,6 +1542,8 @@ class Message implements FromArrayInterface, ToArrayInterface
             'pinned_message' => $this->pinnedMessage,
             'invoice' => $this->invoice,
             'successful_payment' => $this->successfulPayment,
+            'user_shared' => $this->userShared,
+            'chat_shared' => $this->chatShared,
             'connected_website' => $this->connectedWebsite,
             'write_access_allowed' => $this->writeAccessAllowed,
             'passport_data' => $this->passportData,

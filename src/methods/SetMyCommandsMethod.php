@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\BotCommandScope;
  * [this manual](https://core.telegram.org/bots/features#commands) for more details about bot commands. Returns *True*
  * on success.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setmycommands
  */

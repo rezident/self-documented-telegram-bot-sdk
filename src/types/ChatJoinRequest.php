@@ -8,7 +8,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 /**
  * Represents a join request sent to a chat.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chatjoinrequest
  */
@@ -18,18 +18,24 @@ class ChatJoinRequest implements FromArrayInterface, ToArrayInterface
 
     private ?ChatInviteLink $inviteLink = null;
 
-    private function __construct(private Chat $chat, private User $from, private int $date)
+    private function __construct(private Chat $chat, private User $from, private int $userChatId, private int $date)
     {
     }
 
     /**
      * @param Chat $chat Chat to which the request was sent
      * @param User $from User that sent the join request
+     * @param int $userChatId Identifier of a private chat with the user who sent the join request. This number may
+     *                        have more than 32 significant bits and some programming languages may have
+     *                        difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so
+     *                        a 64-bit integer or double-precision float type are safe for storing this identifier. The
+     *                        bot can use this identifier for 24 hours to send messages until the join request is
+     *                        processed, assuming no other administrator contacted the user.
      * @param int $date Date the request was sent in Unix time
      */
-    public static function new(Chat $chat, User $from, int $date): self
+    public static function new(Chat $chat, User $from, int $userChatId, int $date): self
     {
-        return new self($chat, $from, $date);
+        return new self($chat, $from, $userChatId, $date);
     }
 
     /**
@@ -67,6 +73,18 @@ class ChatJoinRequest implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * Identifier of a private chat with the user who sent the join request. This number may have more than 32
+     * significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it
+     * has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this
+     * identifier. The bot can use this identifier for 24 hours to send messages until the join request is processed,
+     * assuming no other administrator contacted the user.
+     */
+    public function getUserChatId(): ?int
+    {
+        return $this->userChatId;
+    }
+
+    /**
      * Date the request was sent in Unix time
      */
     public function getDate(): ?int
@@ -96,7 +114,12 @@ class ChatJoinRequest implements FromArrayInterface, ToArrayInterface
             return null;
         }
 
-        $instance = new self(Chat::fromArray($array['chat']), User::fromArray($array['from']), $array['date']);
+        $instance = new self(
+            Chat::fromArray($array['chat']),
+            User::fromArray($array['from']),
+            $array['user_chat_id'],
+            $array['date'],
+        );
 
         $instance->bio = $array['bio'] ?? null;
         $instance->inviteLink = ChatInviteLink::fromArray($array['invite_link'] ?? null);
@@ -109,6 +132,7 @@ class ChatJoinRequest implements FromArrayInterface, ToArrayInterface
         $data = [
             'chat' => $this->chat,
             'from' => $this->from,
+            'user_chat_id' => $this->userChatId,
             'date' => $this->date,
             'bio' => $this->bio,
             'invite_link' => $this->inviteLink,

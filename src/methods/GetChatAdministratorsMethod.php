@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfChatMember;
  * Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of
  * [ChatMember](https://core.telegram.org/bots/api#chatmember) objects.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getchatadministrators
  */

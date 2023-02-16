@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ReplyMarkup;
  * exception is made for one-time keyboards that are hidden immediately after the user presses a button (see
  * [ReplyKeyboardMarkup](https://core.telegram.org/bots/api#replykeyboardmarkup)).
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#replykeyboardremove
  */

@@ -8,7 +8,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 /**
  * Describes actions that a non-administrator user is allowed to take in a chat.
  *
- * @version 6.4
+ * @version 6.5
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#chatpermissions
  */
@@ -16,7 +16,17 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
 {
     private ?bool $canSendMessages = null;
 
-    private ?bool $canSendMediaMessages = null;
+    private ?bool $canSendAudios = null;
+
+    private ?bool $canSendDocuments = null;
+
+    private ?bool $canSendPhotos = null;
+
+    private ?bool $canSendVideos = null;
+
+    private ?bool $canSendVideoNotes = null;
+
+    private ?bool $canSendVoiceNotes = null;
 
     private ?bool $canSendPolls = null;
 
@@ -42,7 +52,7 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * *True*, if the user is allowed to send text messages, contacts, locations and venues
+     * *True*, if the user is allowed to send text messages, contacts, invoices, locations and venues
      */
     public function canSendMessages(?bool $canSendMessages): self
     {
@@ -51,17 +61,61 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * *True*, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes, implies
-     * can\_send\_messages
+     * *True*, if the user is allowed to send audios
      */
-    public function canSendMediaMessages(?bool $canSendMediaMessages): self
+    public function canSendAudios(?bool $canSendAudios): self
     {
-        $this->canSendMediaMessages = $canSendMediaMessages;
+        $this->canSendAudios = $canSendAudios;
         return $this;
     }
 
     /**
-     * *True*, if the user is allowed to send polls, implies can\_send\_messages
+     * *True*, if the user is allowed to send documents
+     */
+    public function canSendDocuments(?bool $canSendDocuments): self
+    {
+        $this->canSendDocuments = $canSendDocuments;
+        return $this;
+    }
+
+    /**
+     * *True*, if the user is allowed to send photos
+     */
+    public function canSendPhotos(?bool $canSendPhotos): self
+    {
+        $this->canSendPhotos = $canSendPhotos;
+        return $this;
+    }
+
+    /**
+     * *True*, if the user is allowed to send videos
+     */
+    public function canSendVideos(?bool $canSendVideos): self
+    {
+        $this->canSendVideos = $canSendVideos;
+        return $this;
+    }
+
+    /**
+     * *True*, if the user is allowed to send video notes
+     */
+    public function canSendVideoNotes(?bool $canSendVideoNotes): self
+    {
+        $this->canSendVideoNotes = $canSendVideoNotes;
+        return $this;
+    }
+
+    /**
+     * *True*, if the user is allowed to send voice notes
+     */
+    public function canSendVoiceNotes(?bool $canSendVoiceNotes): self
+    {
+        $this->canSendVoiceNotes = $canSendVoiceNotes;
+        return $this;
+    }
+
+    /**
+     * *True*, if the user is allowed to send polls
      */
     public function canSendPolls(?bool $canSendPolls): self
     {
@@ -70,8 +124,7 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * *True*, if the user is allowed to send animations, games, stickers and use inline bots, implies
-     * can\_send\_media\_messages
+     * *True*, if the user is allowed to send animations, games, stickers and use inline bots
      */
     public function canSendOtherMessages(?bool $canSendOtherMessages): self
     {
@@ -80,7 +133,7 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * *True*, if the user is allowed to add web page previews to their messages, implies can\_send\_media\_messages
+     * *True*, if the user is allowed to add web page previews to their messages
      */
     public function canAddWebPagePreviews(?bool $canAddWebPagePreviews): self
     {
@@ -125,7 +178,7 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * *True*, if the user is allowed to send text messages, contacts, locations and venues
+     * *True*, if the user is allowed to send text messages, contacts, invoices, locations and venues
      */
     public function getCanSendMessages(): ?bool
     {
@@ -133,16 +186,55 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * *True*, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes, implies
-     * can\_send\_messages
+     * *True*, if the user is allowed to send audios
      */
-    public function getCanSendMediaMessages(): ?bool
+    public function getCanSendAudios(): ?bool
     {
-        return $this->canSendMediaMessages;
+        return $this->canSendAudios;
     }
 
     /**
-     * *True*, if the user is allowed to send polls, implies can\_send\_messages
+     * *True*, if the user is allowed to send documents
+     */
+    public function getCanSendDocuments(): ?bool
+    {
+        return $this->canSendDocuments;
+    }
+
+    /**
+     * *True*, if the user is allowed to send photos
+     */
+    public function getCanSendPhotos(): ?bool
+    {
+        return $this->canSendPhotos;
+    }
+
+    /**
+     * *True*, if the user is allowed to send videos
+     */
+    public function getCanSendVideos(): ?bool
+    {
+        return $this->canSendVideos;
+    }
+
+    /**
+     * *True*, if the user is allowed to send video notes
+     */
+    public function getCanSendVideoNotes(): ?bool
+    {
+        return $this->canSendVideoNotes;
+    }
+
+    /**
+     * *True*, if the user is allowed to send voice notes
+     */
+    public function getCanSendVoiceNotes(): ?bool
+    {
+        return $this->canSendVoiceNotes;
+    }
+
+    /**
+     * *True*, if the user is allowed to send polls
      */
     public function getCanSendPolls(): ?bool
     {
@@ -150,8 +242,7 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * *True*, if the user is allowed to send animations, games, stickers and use inline bots, implies
-     * can\_send\_media\_messages
+     * *True*, if the user is allowed to send animations, games, stickers and use inline bots
      */
     public function getCanSendOtherMessages(): ?bool
     {
@@ -159,7 +250,7 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
     }
 
     /**
-     * *True*, if the user is allowed to add web page previews to their messages, implies can\_send\_media\_messages
+     * *True*, if the user is allowed to add web page previews to their messages
      */
     public function getCanAddWebPagePreviews(): ?bool
     {
@@ -207,7 +298,12 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
         $instance = new self();
 
         $instance->canSendMessages = $array['can_send_messages'] ?? null;
-        $instance->canSendMediaMessages = $array['can_send_media_messages'] ?? null;
+        $instance->canSendAudios = $array['can_send_audios'] ?? null;
+        $instance->canSendDocuments = $array['can_send_documents'] ?? null;
+        $instance->canSendPhotos = $array['can_send_photos'] ?? null;
+        $instance->canSendVideos = $array['can_send_videos'] ?? null;
+        $instance->canSendVideoNotes = $array['can_send_video_notes'] ?? null;
+        $instance->canSendVoiceNotes = $array['can_send_voice_notes'] ?? null;
         $instance->canSendPolls = $array['can_send_polls'] ?? null;
         $instance->canSendOtherMessages = $array['can_send_other_messages'] ?? null;
         $instance->canAddWebPagePreviews = $array['can_add_web_page_previews'] ?? null;
@@ -223,7 +319,12 @@ class ChatPermissions implements FromArrayInterface, ToArrayInterface
     {
         $data = [
             'can_send_messages' => $this->canSendMessages,
-            'can_send_media_messages' => $this->canSendMediaMessages,
+            'can_send_audios' => $this->canSendAudios,
+            'can_send_documents' => $this->canSendDocuments,
+            'can_send_photos' => $this->canSendPhotos,
+            'can_send_videos' => $this->canSendVideos,
+            'can_send_video_notes' => $this->canSendVideoNotes,
+            'can_send_voice_notes' => $this->canSendVoiceNotes,
             'can_send_polls' => $this->canSendPolls,
             'can_send_other_messages' => $this->canSendOtherMessages,
             'can_add_web_page_previews' => $this->canAddWebPagePreviews,
