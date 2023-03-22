@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
  * **Note:** This will only work in Telegram versions released after October 1, 2016. Older clients will not display any
  * inline results if a game result is among them.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultgame
  */

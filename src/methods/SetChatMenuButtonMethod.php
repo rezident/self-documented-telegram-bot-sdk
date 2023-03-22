@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\MenuButton;
  * Use this method to change the bot's menu button in a private chat, or the default menu button. Returns *True* on
  * success.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setchatmenubutton
  */

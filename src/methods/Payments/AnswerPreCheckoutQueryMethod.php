@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * respond to such pre-checkout queries. On success, *True* is returned. **Note:** The Bot API must receive an answer
  * within 10 seconds after the pre-checkout query was sent.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#answerprecheckoutquery
  */

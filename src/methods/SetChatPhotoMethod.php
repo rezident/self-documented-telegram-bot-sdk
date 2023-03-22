@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InputFile;
  * an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on
  * success.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setchatphoto
  */

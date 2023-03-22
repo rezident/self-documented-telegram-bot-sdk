@@ -10,13 +10,13 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\PhotoSize;
 /**
  * This object represents a sticker.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sticker
  */
 class Sticker implements FromArrayInterface, ToArrayInterface
 {
-    private ?PhotoSize $thumb = null;
+    private ?PhotoSize $thumbnail = null;
 
     private ?string $emoji = null;
 
@@ -27,6 +27,8 @@ class Sticker implements FromArrayInterface, ToArrayInterface
     private ?MaskPosition $maskPosition = null;
 
     private ?string $customEmojiId = null;
+
+    private ?bool $needsRepainting = null;
 
     private ?int $fileSize = null;
 
@@ -69,9 +71,9 @@ class Sticker implements FromArrayInterface, ToArrayInterface
     /**
      * Sticker thumbnail in the .WEBP or .JPG format
      */
-    public function thumb(?PhotoSize $thumb): self
+    public function thumbnail(?PhotoSize $thumbnail): self
     {
-        $this->thumb = $thumb;
+        $this->thumbnail = $thumbnail;
         return $this;
     }
 
@@ -117,6 +119,16 @@ class Sticker implements FromArrayInterface, ToArrayInterface
     public function customEmojiId(?string $customEmojiId): self
     {
         $this->customEmojiId = $customEmojiId;
+        return $this;
+    }
+
+    /**
+     * *True*, if the sticker must be repainted to a text color in messages, the color of the Telegram Premium badge in
+     * emoji status, white color on chat photos, or another appropriate color in other places
+     */
+    public function needsRepainting(?bool $needsRepainting): self
+    {
+        $this->needsRepainting = $needsRepainting;
         return $this;
     }
 
@@ -190,9 +202,9 @@ class Sticker implements FromArrayInterface, ToArrayInterface
     /**
      * Sticker thumbnail in the .WEBP or .JPG format
      */
-    public function getThumb(): ?PhotoSize
+    public function getThumbnail(): ?PhotoSize
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 
     /**
@@ -236,6 +248,15 @@ class Sticker implements FromArrayInterface, ToArrayInterface
     }
 
     /**
+     * *True*, if the sticker must be repainted to a text color in messages, the color of the Telegram Premium badge in
+     * emoji status, white color on chat photos, or another appropriate color in other places
+     */
+    public function getNeedsRepainting(): ?bool
+    {
+        return $this->needsRepainting;
+    }
+
+    /**
      * File size in bytes
      */
     public function getFileSize(): ?int
@@ -259,12 +280,13 @@ class Sticker implements FromArrayInterface, ToArrayInterface
             $array['is_video'],
         );
 
-        $instance->thumb = PhotoSize::fromArray($array['thumb'] ?? null);
+        $instance->thumbnail = PhotoSize::fromArray($array['thumbnail'] ?? null);
         $instance->emoji = $array['emoji'] ?? null;
         $instance->setName = $array['set_name'] ?? null;
         $instance->premiumAnimation = File::fromArray($array['premium_animation'] ?? null);
         $instance->maskPosition = MaskPosition::fromArray($array['mask_position'] ?? null);
         $instance->customEmojiId = $array['custom_emoji_id'] ?? null;
+        $instance->needsRepainting = $array['needs_repainting'] ?? null;
         $instance->fileSize = $array['file_size'] ?? null;
 
         return $instance;
@@ -280,12 +302,13 @@ class Sticker implements FromArrayInterface, ToArrayInterface
             'height' => $this->height,
             'is_animated' => $this->isAnimated,
             'is_video' => $this->isVideo,
-            'thumb' => $this->thumb,
+            'thumbnail' => $this->thumbnail,
             'emoji' => $this->emoji,
             'set_name' => $this->setName,
             'premium_animation' => $this->premiumAnimation,
             'mask_position' => $this->maskPosition,
             'custom_emoji_id' => $this->customEmojiId,
+            'needs_repainting' => $this->needsRepainting,
             'file_size' => $this->fileSize,
         ];
 

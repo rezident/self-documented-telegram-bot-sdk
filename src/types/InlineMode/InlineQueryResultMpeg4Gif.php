@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
  * will be sent by the user with optional caption. Alternatively, you can use *input\_message\_content* to send a
  * message with the specified content instead of the animation.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultmpeg4gif
  */
@@ -24,7 +24,7 @@ class InlineQueryResultMpeg4Gif implements FromArrayInterface, ToArrayInterface
 
     private ?int $mpeg4Duration = null;
 
-    private ?string $thumbMimeType = null;
+    private ?string $thumbnailMimeType = null;
 
     private ?string $title = null;
 
@@ -42,7 +42,7 @@ class InlineQueryResultMpeg4Gif implements FromArrayInterface, ToArrayInterface
         private string $type,
         private string $id,
         private string $mpeg4Url,
-        private string $thumbUrl
+        private string $thumbnailUrl
     ) {
     }
 
@@ -50,11 +50,11 @@ class InlineQueryResultMpeg4Gif implements FromArrayInterface, ToArrayInterface
      * @param string $type Type of the result, must be *mpeg4\_gif*
      * @param string $id Unique identifier for this result, 1-64 bytes
      * @param string $mpeg4Url A valid URL for the MPEG4 file. File size must not exceed 1MB
-     * @param string $thumbUrl URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
+     * @param string $thumbnailUrl URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
      */
-    public static function new(string $type, string $id, string $mpeg4Url, string $thumbUrl): self
+    public static function new(string $type, string $id, string $mpeg4Url, string $thumbnailUrl): self
     {
-        return new self($type, $id, $mpeg4Url, $thumbUrl);
+        return new self($type, $id, $mpeg4Url, $thumbnailUrl);
     }
 
     /**
@@ -87,9 +87,9 @@ class InlineQueryResultMpeg4Gif implements FromArrayInterface, ToArrayInterface
     /**
      * MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
      */
-    public function thumbMimeType(?string $thumbMimeType): self
+    public function thumbnailMimeType(?string $thumbnailMimeType): self
     {
-        $this->thumbMimeType = $thumbMimeType;
+        $this->thumbnailMimeType = $thumbnailMimeType;
         return $this;
     }
 
@@ -199,17 +199,17 @@ class InlineQueryResultMpeg4Gif implements FromArrayInterface, ToArrayInterface
     /**
      * URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
      */
-    public function getThumbUrl(): ?string
+    public function getThumbnailUrl(): ?string
     {
-        return $this->thumbUrl;
+        return $this->thumbnailUrl;
     }
 
     /**
      * MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
      */
-    public function getThumbMimeType(): ?string
+    public function getThumbnailMimeType(): ?string
     {
-        return $this->thumbMimeType;
+        return $this->thumbnailMimeType;
     }
 
     /**
@@ -267,12 +267,12 @@ class InlineQueryResultMpeg4Gif implements FromArrayInterface, ToArrayInterface
             return null;
         }
 
-        $instance = new self($array['type'], $array['id'], $array['mpeg4_url'], $array['thumb_url']);
+        $instance = new self($array['type'], $array['id'], $array['mpeg4_url'], $array['thumbnail_url']);
 
         $instance->mpeg4Width = $array['mpeg4_width'] ?? null;
         $instance->mpeg4Height = $array['mpeg4_height'] ?? null;
         $instance->mpeg4Duration = $array['mpeg4_duration'] ?? null;
-        $instance->thumbMimeType = $array['thumb_mime_type'] ?? null;
+        $instance->thumbnailMimeType = $array['thumbnail_mime_type'] ?? null;
         $instance->title = $array['title'] ?? null;
         $instance->caption = $array['caption'] ?? null;
         $instance->parseMode = $array['parse_mode'] ?? null;
@@ -292,8 +292,8 @@ class InlineQueryResultMpeg4Gif implements FromArrayInterface, ToArrayInterface
             'mpeg4_width' => $this->mpeg4Width,
             'mpeg4_height' => $this->mpeg4Height,
             'mpeg4_duration' => $this->mpeg4Duration,
-            'thumb_url' => $this->thumbUrl,
-            'thumb_mime_type' => $this->thumbMimeType,
+            'thumbnail_url' => $this->thumbnailUrl,
+            'thumbnail_mime_type' => $this->thumbnailMimeType,
             'title' => $this->title,
             'caption' => $this->caption,
             'parse_mode' => $this->parseMode,

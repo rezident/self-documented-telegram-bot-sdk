@@ -10,13 +10,13 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\MediaGroupInterface;
 /**
  * Represents an audio file to be treated as music to be sent.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inputmediaaudio
  */
 class InputMediaAudio extends InputMedia implements FromArrayInterface, ToArrayInterface, MediaGroupInterface
 {
-    private InputFile|string|null $thumb = null;
+    private InputFile|string|null $thumbnail = null;
 
     private ?string $caption = null;
 
@@ -55,9 +55,9 @@ class InputMediaAudio extends InputMedia implements FromArrayInterface, ToArrayI
      * using multipart/form-data under &lt;file\_attach\_name&gt;.
      * [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files)
      */
-    public function thumb(InputFile|string|null $thumb): self
+    public function thumbnail(InputFile|string|null $thumbnail): self
     {
-        $this->thumb = $thumb;
+        $this->thumbnail = $thumbnail;
         return $this;
     }
 
@@ -143,9 +143,9 @@ class InputMediaAudio extends InputMedia implements FromArrayInterface, ToArrayI
      * using multipart/form-data under &lt;file\_attach\_name&gt;.
      * [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files)
      */
-    public function getThumb(): InputFile|string|null
+    public function getThumbnail(): InputFile|string|null
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 
     /**
@@ -205,7 +205,7 @@ class InputMediaAudio extends InputMedia implements FromArrayInterface, ToArrayI
 
         $instance = new self($array['type'], $array['media']);
 
-        $instance->thumb = $array['thumb'] ?? null;
+        $instance->thumbnail = $array['thumbnail'] ?? null;
         $instance->caption = $array['caption'] ?? null;
         $instance->parseMode = $array['parse_mode'] ?? null;
         $instance->captionEntities = ArrayOfMessageEntity::fromArray($array['caption_entities'] ?? null);
@@ -221,7 +221,7 @@ class InputMediaAudio extends InputMedia implements FromArrayInterface, ToArrayI
         $data = [
             'type' => $this->type,
             'media' => $this->media,
-            'thumb' => $this->thumb,
+            'thumbnail' => $this->thumbnail,
             'caption' => $this->caption,
             'parse_mode' => $this->parseMode,
             'caption_entities' => $this->captionEntities,

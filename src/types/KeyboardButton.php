@@ -22,7 +22,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * **Note:** *request\_user* and *request\_chat* options will only work in Telegram versions released after 3 February,
  * 2023. Older clients will display *unsupported message*.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#keyboardbutton
  */

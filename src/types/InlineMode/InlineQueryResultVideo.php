@@ -15,7 +15,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
  * > If an InlineQueryResultVideo message contains an embedded video (e.g., YouTube), you **must** replace its content
  * using *input\_message\_content*.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultvideo
  */
@@ -44,7 +44,7 @@ class InlineQueryResultVideo implements FromArrayInterface, ToArrayInterface
         private string $id,
         private string $videoUrl,
         private string $mimeType,
-        private string $thumbUrl,
+        private string $thumbnailUrl,
         private string $title
     ) {
     }
@@ -54,7 +54,7 @@ class InlineQueryResultVideo implements FromArrayInterface, ToArrayInterface
      * @param string $id Unique identifier for this result, 1-64 bytes
      * @param string $videoUrl A valid URL for the embedded video player or video file
      * @param string $mimeType MIME type of the content of the video URL, “text/html” or “video/mp4”
-     * @param string $thumbUrl URL of the thumbnail (JPEG only) for the video
+     * @param string $thumbnailUrl URL of the thumbnail (JPEG only) for the video
      * @param string $title Title for the result
      */
     public static function new(
@@ -62,10 +62,10 @@ class InlineQueryResultVideo implements FromArrayInterface, ToArrayInterface
         string $id,
         string $videoUrl,
         string $mimeType,
-        string $thumbUrl,
+        string $thumbnailUrl,
         string $title,
     ): self {
-        return new self($type, $id, $videoUrl, $mimeType, $thumbUrl, $title);
+        return new self($type, $id, $videoUrl, $mimeType, $thumbnailUrl, $title);
     }
 
     /**
@@ -186,9 +186,9 @@ class InlineQueryResultVideo implements FromArrayInterface, ToArrayInterface
     /**
      * URL of the thumbnail (JPEG only) for the video
      */
-    public function getThumbUrl(): ?string
+    public function getThumbnailUrl(): ?string
     {
-        return $this->thumbUrl;
+        return $this->thumbnailUrl;
     }
 
     /**
@@ -284,7 +284,7 @@ class InlineQueryResultVideo implements FromArrayInterface, ToArrayInterface
             $array['id'],
             $array['video_url'],
             $array['mime_type'],
-            $array['thumb_url'],
+            $array['thumbnail_url'],
             $array['title'],
         );
 
@@ -308,7 +308,7 @@ class InlineQueryResultVideo implements FromArrayInterface, ToArrayInterface
             'id' => $this->id,
             'video_url' => $this->videoUrl,
             'mime_type' => $this->mimeType,
-            'thumb_url' => $this->thumbUrl,
+            'thumbnail_url' => $this->thumbnailUrl,
             'title' => $this->title,
             'caption' => $this->caption,
             'parse_mode' => $this->parseMode,

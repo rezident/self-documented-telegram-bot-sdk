@@ -14,7 +14,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send animation files of up to
  * 50 MB in size, this limit may be changed in the future.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendanimation
  */
@@ -28,7 +28,7 @@ class SendAnimationMethod implements ToArrayInterface
 
     private ?int $height = null;
 
-    private InputFile|string|null $thumb = null;
+    private InputFile|string|null $thumbnail = null;
 
     private ?string $caption = null;
 
@@ -110,9 +110,9 @@ class SendAnimationMethod implements ToArrayInterface
      * using multipart/form-data under &lt;file\_attach\_name&gt;.
      * [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files)
      */
-    public function thumb(InputFile|string|null $thumb): self
+    public function thumbnail(InputFile|string|null $thumbnail): self
     {
-        $this->thumb = $thumb;
+        $this->thumbnail = $thumbnail;
         return $this;
     }
 
@@ -213,7 +213,7 @@ class SendAnimationMethod implements ToArrayInterface
             'duration' => $this->duration,
             'width' => $this->width,
             'height' => $this->height,
-            'thumb' => $this->thumb,
+            'thumbnail' => $this->thumbnail,
             'caption' => $this->caption,
             'parse_mode' => $this->parseMode,
             'caption_entities' => $this->captionEntities,

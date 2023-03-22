@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfEncryptedPassp
 /**
  * Describes Telegram Passport data shared with the bot by the user.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#passportdata
  */

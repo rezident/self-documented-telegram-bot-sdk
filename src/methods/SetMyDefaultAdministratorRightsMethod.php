@@ -8,10 +8,10 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\ChatAdministratorRights;
 
 /**
  * Use this method to change the default administrator rights requested by the bot when it's added as an administrator
- * to groups or channels. These rights will be suggested to users, but they are are free to modify the list before
- * adding the bot. Returns *True* on success.
+ * to groups or channels. These rights will be suggested to users, but they are free to modify the list before adding
+ * the bot. Returns *True* on success.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#setmydefaultadministratorrights
  */

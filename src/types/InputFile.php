@@ -8,7 +8,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToPlainValueInterface;
  * This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual
  * way that files are uploaded via the browser.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inputfile
  */

@@ -17,7 +17,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  *
  * We only recommend using this method when a response from the bot will take a **noticeable** amount of time to arrive.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendchataction
  */

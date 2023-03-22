@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfPassportFile;
 /**
  * Describes documents or other Telegram Passport elements shared with the bot by the user.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#encryptedpassportelement
  */

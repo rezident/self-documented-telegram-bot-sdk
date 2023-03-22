@@ -18,7 +18,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfUpdate;
  *
  * > **2.** In order to avoid getting duplicate updates, recalculate *offset* after each server response.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getupdates
  */

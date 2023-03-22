@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * chat for this to work and must have the appropriate administrator rights. Pass *False* for all boolean parameters to
  * demote a user. Returns *True* on success.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#promotechatmember
  */

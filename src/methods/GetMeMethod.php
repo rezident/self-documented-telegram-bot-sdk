@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\User;
  * A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about
  * the bot in form of a [User](https://core.telegram.org/bots/api#user) object.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#getme
  */

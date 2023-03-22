@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and
  * must have the *can\_invite\_users* administrator right. Returns *True* on success.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#declinechatjoinrequest
  */

@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
  * default, this animated MPEG-4 file will be sent by the user with an optional caption. Alternatively, you can use
  * *input\_message\_content* to send a message with the specified content instead of the animation.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultcachedmpeg4gif
  */

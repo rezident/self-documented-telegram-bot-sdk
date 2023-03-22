@@ -9,13 +9,13 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * This object represents a [video message](https://telegram.org/blog/video-messages-and-telescope) (available in
  * Telegram apps as of [v.4.0](https://telegram.org/blog/video-messages-and-telescope)).
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#videonote
  */
 class VideoNote implements FromArrayInterface, ToArrayInterface
 {
-    private ?PhotoSize $thumb = null;
+    private ?PhotoSize $thumbnail = null;
 
     private ?int $fileSize = null;
 
@@ -42,9 +42,9 @@ class VideoNote implements FromArrayInterface, ToArrayInterface
     /**
      * Video thumbnail
      */
-    public function thumb(?PhotoSize $thumb): self
+    public function thumbnail(?PhotoSize $thumbnail): self
     {
-        $this->thumb = $thumb;
+        $this->thumbnail = $thumbnail;
         return $this;
     }
 
@@ -93,9 +93,9 @@ class VideoNote implements FromArrayInterface, ToArrayInterface
     /**
      * Video thumbnail
      */
-    public function getThumb(): ?PhotoSize
+    public function getThumbnail(): ?PhotoSize
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 
     /**
@@ -114,7 +114,7 @@ class VideoNote implements FromArrayInterface, ToArrayInterface
 
         $instance = new self($array['file_id'], $array['file_unique_id'], $array['length'], $array['duration']);
 
-        $instance->thumb = PhotoSize::fromArray($array['thumb'] ?? null);
+        $instance->thumbnail = PhotoSize::fromArray($array['thumbnail'] ?? null);
         $instance->fileSize = $array['file_size'] ?? null;
 
         return $instance;
@@ -127,7 +127,7 @@ class VideoNote implements FromArrayInterface, ToArrayInterface
             'file_unique_id' => $this->fileUniqueId,
             'length' => $this->length,
             'duration' => $this->duration,
-            'thumb' => $this->thumb,
+            'thumbnail' => $this->thumbnail,
             'file_size' => $this->fileSize,
         ];
 

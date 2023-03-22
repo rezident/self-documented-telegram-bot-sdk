@@ -10,13 +10,13 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\PhotoSize;
 /**
  * This object represents a sticker set.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#stickerset
  */
 class StickerSet implements FromArrayInterface, ToArrayInterface
 {
-    private ?PhotoSize $thumb = null;
+    private ?PhotoSize $thumbnail = null;
 
     private function __construct(
         private string $name,
@@ -52,9 +52,9 @@ class StickerSet implements FromArrayInterface, ToArrayInterface
     /**
      * Sticker set thumbnail in the .WEBP, .TGS, or .WEBM format
      */
-    public function thumb(?PhotoSize $thumb): self
+    public function thumbnail(?PhotoSize $thumbnail): self
     {
-        $this->thumb = $thumb;
+        $this->thumbnail = $thumbnail;
         return $this;
     }
 
@@ -109,9 +109,9 @@ class StickerSet implements FromArrayInterface, ToArrayInterface
     /**
      * Sticker set thumbnail in the .WEBP, .TGS, or .WEBM format
      */
-    public function getThumb(): ?PhotoSize
+    public function getThumbnail(): ?PhotoSize
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 
     public static function fromArray(?array $array): ?self
@@ -129,7 +129,7 @@ class StickerSet implements FromArrayInterface, ToArrayInterface
             ArrayOfSticker::fromArray($array['stickers']),
         );
 
-        $instance->thumb = PhotoSize::fromArray($array['thumb'] ?? null);
+        $instance->thumbnail = PhotoSize::fromArray($array['thumbnail'] ?? null);
 
         return $instance;
     }
@@ -143,7 +143,7 @@ class StickerSet implements FromArrayInterface, ToArrayInterface
             'is_animated' => $this->isAnimated,
             'is_video' => $this->isVideo,
             'stickers' => $this->stickers,
-            'thumb' => $this->thumb,
+            'thumbnail' => $this->thumbnail,
         ];
 
         return array_filter($data, fn($val) => $val !== null);

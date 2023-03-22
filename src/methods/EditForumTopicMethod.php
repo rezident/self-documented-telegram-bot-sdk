@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * chat for this to work and must have *can\_manage\_topics* administrator rights, unless it is the creator of the
  * topic. Returns *True* on success.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#editforumtopic
  */

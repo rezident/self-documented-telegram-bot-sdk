@@ -12,7 +12,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
  * caption. Alternatively, you can use *input\_message\_content* to send a message with the specified content instead of
  * the animation.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultgif
  */
@@ -24,7 +24,7 @@ class InlineQueryResultGif implements FromArrayInterface, ToArrayInterface
 
     private ?int $gifDuration = null;
 
-    private ?string $thumbMimeType = null;
+    private ?string $thumbnailMimeType = null;
 
     private ?string $title = null;
 
@@ -42,7 +42,7 @@ class InlineQueryResultGif implements FromArrayInterface, ToArrayInterface
         private string $type,
         private string $id,
         private string $gifUrl,
-        private string $thumbUrl
+        private string $thumbnailUrl
     ) {
     }
 
@@ -50,11 +50,11 @@ class InlineQueryResultGif implements FromArrayInterface, ToArrayInterface
      * @param string $type Type of the result, must be *gif*
      * @param string $id Unique identifier for this result, 1-64 bytes
      * @param string $gifUrl A valid URL for the GIF file. File size must not exceed 1MB
-     * @param string $thumbUrl URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
+     * @param string $thumbnailUrl URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
      */
-    public static function new(string $type, string $id, string $gifUrl, string $thumbUrl): self
+    public static function new(string $type, string $id, string $gifUrl, string $thumbnailUrl): self
     {
-        return new self($type, $id, $gifUrl, $thumbUrl);
+        return new self($type, $id, $gifUrl, $thumbnailUrl);
     }
 
     /**
@@ -87,9 +87,9 @@ class InlineQueryResultGif implements FromArrayInterface, ToArrayInterface
     /**
      * MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
      */
-    public function thumbMimeType(?string $thumbMimeType): self
+    public function thumbnailMimeType(?string $thumbnailMimeType): self
     {
-        $this->thumbMimeType = $thumbMimeType;
+        $this->thumbnailMimeType = $thumbnailMimeType;
         return $this;
     }
 
@@ -199,17 +199,17 @@ class InlineQueryResultGif implements FromArrayInterface, ToArrayInterface
     /**
      * URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
      */
-    public function getThumbUrl(): ?string
+    public function getThumbnailUrl(): ?string
     {
-        return $this->thumbUrl;
+        return $this->thumbnailUrl;
     }
 
     /**
      * MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
      */
-    public function getThumbMimeType(): ?string
+    public function getThumbnailMimeType(): ?string
     {
-        return $this->thumbMimeType;
+        return $this->thumbnailMimeType;
     }
 
     /**
@@ -267,12 +267,12 @@ class InlineQueryResultGif implements FromArrayInterface, ToArrayInterface
             return null;
         }
 
-        $instance = new self($array['type'], $array['id'], $array['gif_url'], $array['thumb_url']);
+        $instance = new self($array['type'], $array['id'], $array['gif_url'], $array['thumbnail_url']);
 
         $instance->gifWidth = $array['gif_width'] ?? null;
         $instance->gifHeight = $array['gif_height'] ?? null;
         $instance->gifDuration = $array['gif_duration'] ?? null;
-        $instance->thumbMimeType = $array['thumb_mime_type'] ?? null;
+        $instance->thumbnailMimeType = $array['thumbnail_mime_type'] ?? null;
         $instance->title = $array['title'] ?? null;
         $instance->caption = $array['caption'] ?? null;
         $instance->parseMode = $array['parse_mode'] ?? null;
@@ -292,8 +292,8 @@ class InlineQueryResultGif implements FromArrayInterface, ToArrayInterface
             'gif_width' => $this->gifWidth,
             'gif_height' => $this->gifHeight,
             'gif_duration' => $this->gifDuration,
-            'thumb_url' => $this->thumbUrl,
-            'thumb_mime_type' => $this->thumbMimeType,
+            'thumbnail_url' => $this->thumbnailUrl,
+            'thumbnail_mime_type' => $this->thumbnailMimeType,
             'title' => $this->title,
             'caption' => $this->caption,
             'parse_mode' => $this->parseMode,

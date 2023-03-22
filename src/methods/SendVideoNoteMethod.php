@@ -13,7 +13,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * videos of up to 1 minute long. Use this method to send video messages. On success, the sent
  * [Message](https://core.telegram.org/bots/api#message) is returned.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendvideonote
  */
@@ -25,7 +25,7 @@ class SendVideoNoteMethod implements ToArrayInterface
 
     private ?int $length = null;
 
-    private InputFile|string|null $thumb = null;
+    private InputFile|string|null $thumbnail = null;
 
     private ?bool $disableNotification = null;
 
@@ -90,9 +90,9 @@ class SendVideoNoteMethod implements ToArrayInterface
      * using multipart/form-data under &lt;file\_attach\_name&gt;.
      * [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files)
      */
-    public function thumb(InputFile|string|null $thumb): self
+    public function thumbnail(InputFile|string|null $thumbnail): self
     {
-        $this->thumb = $thumb;
+        $this->thumbnail = $thumbnail;
         return $this;
     }
 
@@ -153,7 +153,7 @@ class SendVideoNoteMethod implements ToArrayInterface
             'video_note' => $this->videoNote,
             'duration' => $this->duration,
             'length' => $this->length,
-            'thumb' => $this->thumb,
+            'thumbnail' => $this->thumbnail,
             'disable_notification' => $this->disableNotification,
             'protect_content' => $this->protectContent,
             'reply_to_message_id' => $this->replyToMessageId,

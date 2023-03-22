@@ -16,7 +16,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\MessageId;
  * the original message. Returns the [MessageId](https://core.telegram.org/bots/api#messageid) of the sent message on
  * success.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#copymessage
  */

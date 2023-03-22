@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\ForumTopic;
  * to work and must have the *can\_manage\_topics* administrator rights. Returns information about the created topic as
  * a [ForumTopic](https://core.telegram.org/bots/api#forumtopic) object.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#createforumtopic
  */

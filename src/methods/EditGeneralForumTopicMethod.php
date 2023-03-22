@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator
  * in the chat for this to work and must have *can\_manage\_topics* administrator rights. Returns *True* on success.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#editgeneralforumtopic
  */

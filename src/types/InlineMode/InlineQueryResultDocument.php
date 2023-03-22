@@ -14,7 +14,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
  *
  * **Note:** This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultdocument
  */
@@ -32,11 +32,11 @@ class InlineQueryResultDocument implements FromArrayInterface, ToArrayInterface
 
     private ?InputMessageContent $inputMessageContent = null;
 
-    private ?string $thumbUrl = null;
+    private ?string $thumbnailUrl = null;
 
-    private ?int $thumbWidth = null;
+    private ?int $thumbnailWidth = null;
 
-    private ?int $thumbHeight = null;
+    private ?int $thumbnailHeight = null;
 
     private function __construct(
         private string $type,
@@ -117,27 +117,27 @@ class InlineQueryResultDocument implements FromArrayInterface, ToArrayInterface
     /**
      * URL of the thumbnail (JPEG only) for the file
      */
-    public function thumbUrl(?string $thumbUrl): self
+    public function thumbnailUrl(?string $thumbnailUrl): self
     {
-        $this->thumbUrl = $thumbUrl;
+        $this->thumbnailUrl = $thumbnailUrl;
         return $this;
     }
 
     /**
      * Thumbnail width
      */
-    public function thumbWidth(?int $thumbWidth): self
+    public function thumbnailWidth(?int $thumbnailWidth): self
     {
-        $this->thumbWidth = $thumbWidth;
+        $this->thumbnailWidth = $thumbnailWidth;
         return $this;
     }
 
     /**
      * Thumbnail height
      */
-    public function thumbHeight(?int $thumbHeight): self
+    public function thumbnailHeight(?int $thumbnailHeight): self
     {
-        $this->thumbHeight = $thumbHeight;
+        $this->thumbnailHeight = $thumbnailHeight;
         return $this;
     }
 
@@ -233,25 +233,25 @@ class InlineQueryResultDocument implements FromArrayInterface, ToArrayInterface
     /**
      * URL of the thumbnail (JPEG only) for the file
      */
-    public function getThumbUrl(): ?string
+    public function getThumbnailUrl(): ?string
     {
-        return $this->thumbUrl;
+        return $this->thumbnailUrl;
     }
 
     /**
      * Thumbnail width
      */
-    public function getThumbWidth(): ?int
+    public function getThumbnailWidth(): ?int
     {
-        return $this->thumbWidth;
+        return $this->thumbnailWidth;
     }
 
     /**
      * Thumbnail height
      */
-    public function getThumbHeight(): ?int
+    public function getThumbnailHeight(): ?int
     {
-        return $this->thumbHeight;
+        return $this->thumbnailHeight;
     }
 
     public static function fromArray(?array $array): ?self
@@ -274,9 +274,9 @@ class InlineQueryResultDocument implements FromArrayInterface, ToArrayInterface
         $instance->description = $array['description'] ?? null;
         $instance->replyMarkup = InlineKeyboardMarkup::fromArray($array['reply_markup'] ?? null);
         $instance->inputMessageContent = InputMessageContent::fromArray($array['input_message_content'] ?? null);
-        $instance->thumbUrl = $array['thumb_url'] ?? null;
-        $instance->thumbWidth = $array['thumb_width'] ?? null;
-        $instance->thumbHeight = $array['thumb_height'] ?? null;
+        $instance->thumbnailUrl = $array['thumbnail_url'] ?? null;
+        $instance->thumbnailWidth = $array['thumbnail_width'] ?? null;
+        $instance->thumbnailHeight = $array['thumbnail_height'] ?? null;
 
         return $instance;
     }
@@ -295,9 +295,9 @@ class InlineQueryResultDocument implements FromArrayInterface, ToArrayInterface
             'description' => $this->description,
             'reply_markup' => $this->replyMarkup,
             'input_message_content' => $this->inputMessageContent,
-            'thumb_url' => $this->thumbUrl,
-            'thumb_width' => $this->thumbWidth,
-            'thumb_height' => $this->thumbHeight,
+            'thumbnail_url' => $this->thumbnailUrl,
+            'thumbnail_width' => $this->thumbnailWidth,
+            'thumbnail_height' => $this->thumbnailHeight,
         ];
 
         return array_filter($data, fn($val) => $val !== null);

@@ -10,7 +10,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Additional\ArrayOfString;
  * Represents an issue with the translated version of a document. The error is considered resolved when a file with the
  * document translation change.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#passportelementerrortranslationfiles
  */

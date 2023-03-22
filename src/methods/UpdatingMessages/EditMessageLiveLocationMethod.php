@@ -1,6 +1,6 @@
 <?php
 
-namespace Rezident\SelfDocumentedTelegramBotSdk\methods;
+namespace Rezident\SelfDocumentedTelegramBotSdk\methods\UpdatingMessages;
 
 use Rezident\SelfDocumentedTelegramBotSdk\interfaces\Executable;
 use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
@@ -14,7 +14,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned,
  * otherwise *True* is returned.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#editmessagelivelocation
  */

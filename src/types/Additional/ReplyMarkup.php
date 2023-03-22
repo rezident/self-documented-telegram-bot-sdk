@@ -8,7 +8,7 @@ namespace Rezident\SelfDocumentedTelegramBotSdk\types\Additional;
  * [custom reply keyboard](https://core.telegram.org/bots/features#keyboards), instructions to remove reply keyboard or
  * to force a reply from the user.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#replymarkup
  */

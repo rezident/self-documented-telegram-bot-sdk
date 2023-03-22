@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
  * Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively,
  * you can use *input\_message\_content* to send a message with the specified content instead of the photo.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultphoto
  */
@@ -39,7 +39,7 @@ class InlineQueryResultPhoto implements FromArrayInterface, ToArrayInterface
         private string $type,
         private string $id,
         private string $photoUrl,
-        private string $thumbUrl
+        private string $thumbnailUrl
     ) {
     }
 
@@ -48,11 +48,11 @@ class InlineQueryResultPhoto implements FromArrayInterface, ToArrayInterface
      * @param string $id Unique identifier for this result, 1-64 bytes
      * @param string $photoUrl A valid URL of the photo. Photo must be in **JPEG** format. Photo size must not exceed
      *                         5MB
-     * @param string $thumbUrl URL of the thumbnail for the photo
+     * @param string $thumbnailUrl URL of the thumbnail for the photo
      */
-    public static function new(string $type, string $id, string $photoUrl, string $thumbUrl): self
+    public static function new(string $type, string $id, string $photoUrl, string $thumbnailUrl): self
     {
-        return new self($type, $id, $photoUrl, $thumbUrl);
+        return new self($type, $id, $photoUrl, $thumbnailUrl);
     }
 
     /**
@@ -164,9 +164,9 @@ class InlineQueryResultPhoto implements FromArrayInterface, ToArrayInterface
     /**
      * URL of the thumbnail for the photo
      */
-    public function getThumbUrl(): ?string
+    public function getThumbnailUrl(): ?string
     {
-        return $this->thumbUrl;
+        return $this->thumbnailUrl;
     }
 
     /**
@@ -248,7 +248,7 @@ class InlineQueryResultPhoto implements FromArrayInterface, ToArrayInterface
             return null;
         }
 
-        $instance = new self($array['type'], $array['id'], $array['photo_url'], $array['thumb_url']);
+        $instance = new self($array['type'], $array['id'], $array['photo_url'], $array['thumbnail_url']);
 
         $instance->photoWidth = $array['photo_width'] ?? null;
         $instance->photoHeight = $array['photo_height'] ?? null;
@@ -269,7 +269,7 @@ class InlineQueryResultPhoto implements FromArrayInterface, ToArrayInterface
             'type' => $this->type,
             'id' => $this->id,
             'photo_url' => $this->photoUrl,
-            'thumb_url' => $this->thumbUrl,
+            'thumbnail_url' => $this->thumbnailUrl,
             'photo_width' => $this->photoWidth,
             'photo_height' => $this->photoHeight,
             'title' => $this->title,

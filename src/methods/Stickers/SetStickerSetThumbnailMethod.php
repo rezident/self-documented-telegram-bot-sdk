@@ -7,16 +7,16 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 use Rezident\SelfDocumentedTelegramBotSdk\types\InputFile;
 
 /**
- * Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only.
- * Video thumbnails can be set only for video sticker sets only. Returns *True* on success.
+ * Use this method to set the thumbnail of a regular or mask sticker set. The format of the thumbnail file must match
+ * the format of the stickers in the set. Returns *True* on success.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
- * @link https://core.telegram.org/bots/api#setstickersetthumb
+ * @link https://core.telegram.org/bots/api#setstickersetthumbnail
  */
-class SetStickerSetThumbMethod implements ToArrayInterface
+class SetStickerSetThumbnailMethod implements ToArrayInterface
 {
-    private InputFile|string|null $thumb = null;
+    private InputFile|string|null $thumbnail = null;
 
     private function __construct(private string $name, private int $userId)
     {
@@ -32,21 +32,22 @@ class SetStickerSetThumbMethod implements ToArrayInterface
     }
 
     /**
-     * A **PNG** image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px,
-     * or a **TGS** animation with the thumbnail up to 32 kilobytes in size; see
+     * A **.WEBP** or **.PNG** image with the thumbnail, must be up to 128 kilobytes in size and have a width and
+     * height of exactly 100px, or a **.TGS** animation with a thumbnail up to 32 kilobytes in size (see
      * [](https://core.telegram.org/stickers#animated-sticker-requirements)<https://core.telegram.org/stickers#animated-sticker-requirements>
-     * for animated sticker technical requirements, or a **WEBM** video with the thumbnail up to 32 kilobytes in size;
+     * for animated sticker technical requirements), or a **WEBM** video with the thumbnail up to 32 kilobytes in size;
      * see
      * [](https://core.telegram.org/stickers#video-sticker-requirements)<https://core.telegram.org/stickers#video-sticker-requirements>
      * for video sticker technical requirements. Pass a *file\_id* as a String to send a file that already exists on
      * the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new
      * one using multipart/form-data.
-     * [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files). Animated sticker set
-     * thumbnails can't be uploaded via HTTP URL.
+     * [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files). Animated and video
+     * sticker set thumbnails can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first
+     * sticker is used as the thumbnail.
      */
-    public function thumb(InputFile|string|null $thumb): self
+    public function thumbnail(InputFile|string|null $thumbnail): self
     {
-        $this->thumb = $thumb;
+        $this->thumbnail = $thumbnail;
         return $this;
     }
 
@@ -55,7 +56,7 @@ class SetStickerSetThumbMethod implements ToArrayInterface
         $data = [
             'name' => $this->name,
             'user_id' => $this->userId,
-            'thumb' => $this->thumb,
+            'thumbnail' => $this->thumbnail,
         ];
 
         return array_filter($data, fn($val) => $val !== null);

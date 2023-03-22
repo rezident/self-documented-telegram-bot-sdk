@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\InlineKeyboardMarkup;
 /**
  * Represents a link to an article or web page.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#inlinequeryresultarticle
  */
@@ -23,11 +23,11 @@ class InlineQueryResultArticle implements FromArrayInterface, ToArrayInterface
 
     private ?string $description = null;
 
-    private ?string $thumbUrl = null;
+    private ?string $thumbnailUrl = null;
 
-    private ?int $thumbWidth = null;
+    private ?int $thumbnailWidth = null;
 
-    private ?int $thumbHeight = null;
+    private ?int $thumbnailHeight = null;
 
     private function __construct(
         private string $type,
@@ -87,27 +87,27 @@ class InlineQueryResultArticle implements FromArrayInterface, ToArrayInterface
     /**
      * Url of the thumbnail for the result
      */
-    public function thumbUrl(?string $thumbUrl): self
+    public function thumbnailUrl(?string $thumbnailUrl): self
     {
-        $this->thumbUrl = $thumbUrl;
+        $this->thumbnailUrl = $thumbnailUrl;
         return $this;
     }
 
     /**
      * Thumbnail width
      */
-    public function thumbWidth(?int $thumbWidth): self
+    public function thumbnailWidth(?int $thumbnailWidth): self
     {
-        $this->thumbWidth = $thumbWidth;
+        $this->thumbnailWidth = $thumbnailWidth;
         return $this;
     }
 
     /**
      * Thumbnail height
      */
-    public function thumbHeight(?int $thumbHeight): self
+    public function thumbnailHeight(?int $thumbnailHeight): self
     {
-        $this->thumbHeight = $thumbHeight;
+        $this->thumbnailHeight = $thumbnailHeight;
         return $this;
     }
 
@@ -178,25 +178,25 @@ class InlineQueryResultArticle implements FromArrayInterface, ToArrayInterface
     /**
      * Url of the thumbnail for the result
      */
-    public function getThumbUrl(): ?string
+    public function getThumbnailUrl(): ?string
     {
-        return $this->thumbUrl;
+        return $this->thumbnailUrl;
     }
 
     /**
      * Thumbnail width
      */
-    public function getThumbWidth(): ?int
+    public function getThumbnailWidth(): ?int
     {
-        return $this->thumbWidth;
+        return $this->thumbnailWidth;
     }
 
     /**
      * Thumbnail height
      */
-    public function getThumbHeight(): ?int
+    public function getThumbnailHeight(): ?int
     {
-        return $this->thumbHeight;
+        return $this->thumbnailHeight;
     }
 
     public static function fromArray(?array $array): ?self
@@ -216,9 +216,9 @@ class InlineQueryResultArticle implements FromArrayInterface, ToArrayInterface
         $instance->url = $array['url'] ?? null;
         $instance->hideUrl = $array['hide_url'] ?? null;
         $instance->description = $array['description'] ?? null;
-        $instance->thumbUrl = $array['thumb_url'] ?? null;
-        $instance->thumbWidth = $array['thumb_width'] ?? null;
-        $instance->thumbHeight = $array['thumb_height'] ?? null;
+        $instance->thumbnailUrl = $array['thumbnail_url'] ?? null;
+        $instance->thumbnailWidth = $array['thumbnail_width'] ?? null;
+        $instance->thumbnailHeight = $array['thumbnail_height'] ?? null;
 
         return $instance;
     }
@@ -234,9 +234,9 @@ class InlineQueryResultArticle implements FromArrayInterface, ToArrayInterface
             'url' => $this->url,
             'hide_url' => $this->hideUrl,
             'description' => $this->description,
-            'thumb_url' => $this->thumbUrl,
-            'thumb_width' => $this->thumbWidth,
-            'thumb_height' => $this->thumbHeight,
+            'thumbnail_url' => $this->thumbnailUrl,
+            'thumbnail_width' => $this->thumbnailWidth,
+            'thumbnail_height' => $this->thumbnailHeight,
         ];
 
         return array_filter($data, fn($val) => $val !== null);

@@ -16,7 +16,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  *
  * For sending voice messages, use the [sendVoice](https://core.telegram.org/bots/api#sendvoice) method instead.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendaudio
  */
@@ -36,7 +36,7 @@ class SendAudioMethod implements ToArrayInterface
 
     private ?string $title = null;
 
-    private InputFile|string|null $thumb = null;
+    private InputFile|string|null $thumbnail = null;
 
     private ?bool $disableNotification = null;
 
@@ -139,9 +139,9 @@ class SendAudioMethod implements ToArrayInterface
      * using multipart/form-data under &lt;file\_attach\_name&gt;.
      * [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files)
      */
-    public function thumb(InputFile|string|null $thumb): self
+    public function thumbnail(InputFile|string|null $thumbnail): self
     {
-        $this->thumb = $thumb;
+        $this->thumbnail = $thumbnail;
         return $this;
     }
 
@@ -206,7 +206,7 @@ class SendAudioMethod implements ToArrayInterface
             'duration' => $this->duration,
             'performer' => $this->performer,
             'title' => $this->title,
-            'thumb' => $this->thumb,
+            'thumbnail' => $this->thumbnail,
             'disable_notification' => $this->disableNotification,
             'protect_content' => $this->protectContent,
             'reply_to_message_id' => $this->replyToMessageId,

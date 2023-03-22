@@ -8,7 +8,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 /**
  * This object represents an audio file to be treated as music by the Telegram clients.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#audio
  */
@@ -24,7 +24,7 @@ class Audio implements FromArrayInterface, ToArrayInterface
 
     private ?int $fileSize = null;
 
-    private ?PhotoSize $thumb = null;
+    private ?PhotoSize $thumbnail = null;
 
     private function __construct(private string $fileId, private string $fileUniqueId, private int $duration)
     {
@@ -91,9 +91,9 @@ class Audio implements FromArrayInterface, ToArrayInterface
     /**
      * Thumbnail of the album cover to which the music file belongs
      */
-    public function thumb(?PhotoSize $thumb): self
+    public function thumbnail(?PhotoSize $thumbnail): self
     {
-        $this->thumb = $thumb;
+        $this->thumbnail = $thumbnail;
         return $this;
     }
 
@@ -167,9 +167,9 @@ class Audio implements FromArrayInterface, ToArrayInterface
     /**
      * Thumbnail of the album cover to which the music file belongs
      */
-    public function getThumb(): ?PhotoSize
+    public function getThumbnail(): ?PhotoSize
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 
     public static function fromArray(?array $array): ?self
@@ -185,7 +185,7 @@ class Audio implements FromArrayInterface, ToArrayInterface
         $instance->fileName = $array['file_name'] ?? null;
         $instance->mimeType = $array['mime_type'] ?? null;
         $instance->fileSize = $array['file_size'] ?? null;
-        $instance->thumb = PhotoSize::fromArray($array['thumb'] ?? null);
+        $instance->thumbnail = PhotoSize::fromArray($array['thumbnail'] ?? null);
 
         return $instance;
     }
@@ -201,7 +201,7 @@ class Audio implements FromArrayInterface, ToArrayInterface
             'file_name' => $this->fileName,
             'mime_type' => $this->mimeType,
             'file_size' => $this->fileSize,
-            'thumb' => $this->thumb,
+            'thumbnail' => $this->thumbnail,
         ];
 
         return array_filter($data, fn($val) => $val !== null);

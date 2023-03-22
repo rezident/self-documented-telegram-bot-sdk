@@ -10,13 +10,13 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * [voice messages](https://core.telegram.org/bots/api#voice) and
  * [audio files](https://core.telegram.org/bots/api#audio)).
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#document
  */
 class Document implements FromArrayInterface, ToArrayInterface
 {
-    private ?PhotoSize $thumb = null;
+    private ?PhotoSize $thumbnail = null;
 
     private ?string $fileName = null;
 
@@ -41,9 +41,9 @@ class Document implements FromArrayInterface, ToArrayInterface
     /**
      * Document thumbnail as defined by sender
      */
-    public function thumb(?PhotoSize $thumb): self
+    public function thumbnail(?PhotoSize $thumbnail): self
     {
-        $this->thumb = $thumb;
+        $this->thumbnail = $thumbnail;
         return $this;
     }
 
@@ -96,9 +96,9 @@ class Document implements FromArrayInterface, ToArrayInterface
     /**
      * Document thumbnail as defined by sender
      */
-    public function getThumb(): ?PhotoSize
+    public function getThumbnail(): ?PhotoSize
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 
     /**
@@ -135,7 +135,7 @@ class Document implements FromArrayInterface, ToArrayInterface
 
         $instance = new self($array['file_id'], $array['file_unique_id']);
 
-        $instance->thumb = PhotoSize::fromArray($array['thumb'] ?? null);
+        $instance->thumbnail = PhotoSize::fromArray($array['thumbnail'] ?? null);
         $instance->fileName = $array['file_name'] ?? null;
         $instance->mimeType = $array['mime_type'] ?? null;
         $instance->fileSize = $array['file_size'] ?? null;
@@ -148,7 +148,7 @@ class Document implements FromArrayInterface, ToArrayInterface
         $data = [
             'file_id' => $this->fileId,
             'file_unique_id' => $this->fileUniqueId,
-            'thumb' => $this->thumb,
+            'thumbnail' => $this->thumbnail,
             'file_name' => $this->fileName,
             'mime_type' => $this->mimeType,
             'file_size' => $this->fileSize,

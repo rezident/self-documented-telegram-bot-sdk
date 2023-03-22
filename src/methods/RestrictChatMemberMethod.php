@@ -11,7 +11,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\ChatPermissions;
  * work and must have the appropriate administrator rights. Pass *True* for all permissions to lift restrictions from a
  * user. Returns *True* on success.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#restrictchatmember
  */

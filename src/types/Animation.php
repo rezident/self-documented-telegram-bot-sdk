@@ -8,13 +8,13 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
 /**
  * This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#animation
  */
 class Animation implements FromArrayInterface, ToArrayInterface
 {
-    private ?PhotoSize $thumb = null;
+    private ?PhotoSize $thumbnail = null;
 
     private ?string $fileName = null;
 
@@ -47,9 +47,9 @@ class Animation implements FromArrayInterface, ToArrayInterface
     /**
      * Animation thumbnail as defined by sender
      */
-    public function thumb(?PhotoSize $thumb): self
+    public function thumbnail(?PhotoSize $thumbnail): self
     {
-        $this->thumb = $thumb;
+        $this->thumbnail = $thumbnail;
         return $this;
     }
 
@@ -126,9 +126,9 @@ class Animation implements FromArrayInterface, ToArrayInterface
     /**
      * Animation thumbnail as defined by sender
      */
-    public function getThumb(): ?PhotoSize
+    public function getThumbnail(): ?PhotoSize
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 
     /**
@@ -171,7 +171,7 @@ class Animation implements FromArrayInterface, ToArrayInterface
             $array['duration'],
         );
 
-        $instance->thumb = PhotoSize::fromArray($array['thumb'] ?? null);
+        $instance->thumbnail = PhotoSize::fromArray($array['thumbnail'] ?? null);
         $instance->fileName = $array['file_name'] ?? null;
         $instance->mimeType = $array['mime_type'] ?? null;
         $instance->fileSize = $array['file_size'] ?? null;
@@ -187,7 +187,7 @@ class Animation implements FromArrayInterface, ToArrayInterface
             'width' => $this->width,
             'height' => $this->height,
             'duration' => $this->duration,
-            'thumb' => $this->thumb,
+            'thumbnail' => $this->thumbnail,
             'file_name' => $this->fileName,
             'mime_type' => $this->mimeType,
             'file_size' => $this->fileSize,

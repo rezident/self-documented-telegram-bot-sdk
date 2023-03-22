@@ -9,7 +9,7 @@ use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
  * Represents the [scope](https://core.telegram.org/bots/api#botcommandscope) of bot commands, covering all group and
  * supergroup chat administrators.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#botcommandscopeallchatadministrators
  */

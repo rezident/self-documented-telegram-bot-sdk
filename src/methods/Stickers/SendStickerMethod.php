@@ -13,13 +13,15 @@ use Rezident\SelfDocumentedTelegramBotSdk\types\Message;
  * [video](https://telegram.org/blog/video-stickers-better-reactions) .WEBM stickers. On success, the sent
  * [Message](https://core.telegram.org/bots/api#message) is returned.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#sendsticker
  */
 class SendStickerMethod implements ToArrayInterface
 {
     private ?int $messageThreadId = null;
+
+    private ?string $emoji = null;
 
     private ?bool $disableNotification = null;
 
@@ -40,9 +42,11 @@ class SendStickerMethod implements ToArrayInterface
      *                           `@channelusername`)
      * @param InputFile|string $sticker Sticker to send. Pass a file\_id as String to send a file that exists on the
      *                                  Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
-     *                                  get a .WEBP file from the Internet, or upload a new one using
-     *                                  multipart/form-data.
-     *                                  [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files)
+     *                                  get a .WEBP sticker from the Internet, or upload a new .WEBP or .TGS sticker
+     *                                  using multipart/form-data.
+     *                                  [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files).
+     *                                  Video stickers can only be sent by a file\_id. Animated stickers can't be sent
+     *                                  via an HTTP URL.
      */
     public static function new(int|string $chatId, InputFile|string $sticker): self
     {
@@ -55,6 +59,15 @@ class SendStickerMethod implements ToArrayInterface
     public function messageThreadId(?int $messageThreadId): self
     {
         $this->messageThreadId = $messageThreadId;
+        return $this;
+    }
+
+    /**
+     * Emoji associated with the sticker; only for just uploaded stickers
+     */
+    public function emoji(?string $emoji): self
+    {
+        $this->emoji = $emoji;
         return $this;
     }
 
@@ -113,6 +126,7 @@ class SendStickerMethod implements ToArrayInterface
             'chat_id' => $this->chatId,
             'message_thread_id' => $this->messageThreadId,
             'sticker' => $this->sticker,
+            'emoji' => $this->emoji,
             'disable_notification' => $this->disableNotification,
             'protect_content' => $this->protectContent,
             'reply_to_message_id' => $this->replyToMessageId,

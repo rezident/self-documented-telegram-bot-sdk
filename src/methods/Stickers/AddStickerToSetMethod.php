@@ -4,85 +4,32 @@ namespace Rezident\SelfDocumentedTelegramBotSdk\methods\Stickers;
 
 use Rezident\SelfDocumentedTelegramBotSdk\interfaces\Executable;
 use Rezident\SelfDocumentedTelegramBotSdk\interfaces\ToArrayInterface;
-use Rezident\SelfDocumentedTelegramBotSdk\types\InputFile;
-use Rezident\SelfDocumentedTelegramBotSdk\types\Stickers\MaskPosition;
+use Rezident\SelfDocumentedTelegramBotSdk\types\Stickers\InputSticker;
 
 /**
- * Use this method to add a new sticker to a set created by the bot. You **must** use exactly one of the fields
- * *png\_sticker*, *tgs\_sticker*, or *webm\_sticker*. Animated stickers can be added to animated sticker sets and only
- * to them. Animated sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns
- * *True* on success.
+ * Use this method to add a new sticker to a set created by the bot. The format of the added sticker must match the
+ * format of the other stickers in the set. Emoji sticker sets can have up to 200 stickers. Animated and video sticker
+ * sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns *True* on success.
  *
- * @version 6.5
+ * @version 6.6
  * @author Yuri Nazarenko / Rezident <m@rezident.org>
  * @link https://core.telegram.org/bots/api#addstickertoset
  */
 class AddStickerToSetMethod implements ToArrayInterface
 {
-    private InputFile|string|null $pngSticker = null;
-
-    private ?InputFile $tgsSticker = null;
-
-    private ?InputFile $webmSticker = null;
-
-    private ?MaskPosition $maskPosition = null;
-
-    private function __construct(private int $userId, private string $name, private string $emojis)
+    private function __construct(private int $userId, private string $name, private InputSticker $sticker)
     {
     }
 
     /**
      * @param int $userId User identifier of sticker set owner
      * @param string $name Sticker set name
-     * @param string $emojis One or more emoji corresponding to the sticker
+     * @param InputSticker $sticker A JSON-serialized object with information about the added sticker. If exactly the
+     *                              same sticker had already been added to the set, then the set isn't changed.
      */
-    public static function new(int $userId, string $name, string $emojis): self
+    public static function new(int $userId, string $name, InputSticker $sticker): self
     {
-        return new self($userId, $name, $emojis);
-    }
-
-    /**
-     * **PNG** image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and
-     * either width or height must be exactly 512px. Pass a *file\_id* as a String to send a file that already exists
-     * on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a
-     * new one using multipart/form-data.
-     * [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files)
-     */
-    public function pngSticker(InputFile|string|null $pngSticker): self
-    {
-        $this->pngSticker = $pngSticker;
-        return $this;
-    }
-
-    /**
-     * **TGS** animation with the sticker, uploaded using multipart/form-data. See
-     * [](https://core.telegram.org/stickers#animated-sticker-requirements)<https://core.telegram.org/stickers#animated-sticker-requirements>
-     * for technical requirements
-     */
-    public function tgsSticker(?InputFile $tgsSticker): self
-    {
-        $this->tgsSticker = $tgsSticker;
-        return $this;
-    }
-
-    /**
-     * **WEBM** video with the sticker, uploaded using multipart/form-data. See
-     * [](https://core.telegram.org/stickers#video-sticker-requirements)<https://core.telegram.org/stickers#video-sticker-requirements>
-     * for technical requirements
-     */
-    public function webmSticker(?InputFile $webmSticker): self
-    {
-        $this->webmSticker = $webmSticker;
-        return $this;
-    }
-
-    /**
-     * A JSON-serialized object for position where the mask should be placed on faces
-     */
-    public function maskPosition(?MaskPosition $maskPosition): self
-    {
-        $this->maskPosition = $maskPosition;
-        return $this;
+        return new self($userId, $name, $sticker);
     }
 
     public function toArray(): array
@@ -90,11 +37,7 @@ class AddStickerToSetMethod implements ToArrayInterface
         $data = [
             'user_id' => $this->userId,
             'name' => $this->name,
-            'png_sticker' => $this->pngSticker,
-            'tgs_sticker' => $this->tgsSticker,
-            'webm_sticker' => $this->webmSticker,
-            'emojis' => $this->emojis,
-            'mask_position' => $this->maskPosition,
+            'sticker' => $this->sticker,
         ];
 
         return array_filter($data, fn($val) => $val !== null);
